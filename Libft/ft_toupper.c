@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 15:45:44 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/16 17:28:13 by avinals-         ###   ########.fr       */
+/*   Created: 2025/01/19 11:48:36 by avinals-          #+#    #+#             */
+/*   Updated: 2025/01/19 11:48:36 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (c >= 97 && c <= 122)
+		c = c - 32;
+	return (c);
 }
 
 /* #include <stdio.h>
 int main(void)
 {
-	char *str = "Cuentame este string";
-	
-	ft_strlen(str);
-	printf("%d\n", ft_strlen(str));
-	return (0);
+    char c = 'a';
+    printf("%c\n", ft_toupper(c));
+    return (0);
 } */

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
 	unsigned int	len;
@@ -32,8 +32,9 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	return (len);
 }
+
 #include <stdio.h>
-/*int main(void)
+int main(void)
 {
 	char str[] = "Hellu wurld";
 	char temp[10];
@@ -42,4 +43,4 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	len = ft_strlcpy(temp, str, 8);
 	printf("El string en dest es: '%s'\n", temp);
 	printf("La longitud del string en src es: %u\n", len);
-}*/
+}

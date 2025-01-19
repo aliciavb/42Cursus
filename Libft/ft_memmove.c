@@ -39,6 +39,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
+/* #include <stdio.h>
 int	main(void)
 {
 	char src[50] = "Str en source";
@@ -55,4 +56,4 @@ int	main(void)
 	printf("dest: %s\n", dest);
 
 	return (0);
-}
+} */

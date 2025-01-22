@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 17:52:50 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 17:57:47 by avinals-         ###   ########.fr       */
+/*   Created: 2025/01/22 12:13:22 by avinals           #+#    #+#             */
+/*   Updated: 2025/01/22 12:13:22 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	void	*ptr;
-
-	ptr = malloc(nmemb * size);
+	char	*ptr;
+	size_t	len;
+	
+	len = ft_strlen(s) + 1;
+	ptr = malloc(len);
 	if (ptr == NULL)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
+	ft_memcpy(ptr, s, len);
 	return (ptr);
-} 
+}
 
 /* int main(void)
 {
-	int *ptr;
-	size_t nmemb = 2;
-	size_t size = sizeof(int);
+	char *s = "String to duplicate";
+	char *ptr; // place in memory to store the dup string
 
-	ptr = ft_calloc(nmemb, size);
-	if (ptr == NULL)
+	ptr = ft_strdup(s);
+	if (ptr == NULL) 
 	{
-		printf("Error allocating\n");
+		printf("Allocation failed\n");
 		return (0);
 	}
-	size_t i = 0;
-	while (i < nmemb)
-	{
-		printf("%d\n", ptr[i]);
-		i++;
-	}
+	printf("%s\n", ptr);
 	free(ptr);
 	return (0);
 } */

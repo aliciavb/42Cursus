@@ -40,10 +40,39 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
+char    *ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
-/* faltan;
-• calloc 
-• strdup
-*/
+/* faltan:
+- ft_strjoin
+- ft_strtrim
+- ft_split
+- ft_itoa
+- ft_strmapi
+- ft_striteri
+- ft_putchar_fd
+- ft_putstr_fd
+- ft_putendl_fd
+- ft_putnbr_fd
+ */
+
+/* bonus:
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
+
+- ft_lstnew
+- ft_lstadd_front
+- ft_lstsize
+- ft_lstlast
+- ft_lstadd_back
+- ft_lstdelone
+- ft_lstclear
+- ft_lstiter
+- ft_lstmap
+ */
 
 #endif

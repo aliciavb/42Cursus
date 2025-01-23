@@ -21,10 +21,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	ptr = malloc(len);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1; // total len + null terminator
+	ptr = malloc(len); // allocate mem for the total len of new string
 	if (ptr == NULL)
-		return (NULL);
+		return (NULL); // return null if malloc fails
 	i = 0;
 	while (s1[i] != '\0')
 	{
@@ -40,3 +40,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ptr[i + j] = '\0';
 	return (ptr);
 }
+
+/* int main(void)
+{
+	char *s1 = "String 1";
+	char *s2 = "String 2";
+
+	printf("%s\n", ft_strjoin(s1, s2));
+	return (0);
+} */

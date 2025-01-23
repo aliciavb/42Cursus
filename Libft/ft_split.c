@@ -19,10 +19,8 @@ char	**ft_split(char const *s, char c)
 	size_t	j;
 	size_t	k;
 
-	if (s == NULL)
-		return (NULL);
 	ptr = malloc(sizeof(char *) * (ft_strlen(s) + 1));
-	if (ptr == NULL)
+	if (!s || !ptr)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -32,7 +30,7 @@ char	**ft_split(char const *s, char c)
 		{
 			k = 0;
 			ptr[j] = malloc(ft_strlen(s) + 1);
-			if (ptr[j] == NULL)
+			if (!ptr[j])
 				return (NULL);
 			while (s[i] != c && s[i] != '\0')
 				ptr[j][k++] = s[i++];
@@ -44,3 +42,19 @@ char	**ft_split(char const *s, char c)
 	ptr[j] = NULL;
 	return (ptr);
 }
+/* int main(void)
+{
+	char *s = "This is a string to split";
+	char c = ' ';
+	char **ptr = ft_split(s, c);
+	int i = 0;
+
+	while (ptr[i] != NULL)
+	{
+		printf("ptr[%d] = %s\n", i, ptr[i]);
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
+	return (0);
+} */

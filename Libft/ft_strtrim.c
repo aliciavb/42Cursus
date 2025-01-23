@@ -14,22 +14,21 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-    char	*ptr;
-    size_t	len;
+	char	*ptr;
+	size_t	len;
 
-	len = ft_strlen(s1); //calculate initial length
-    if (s1 == NULL || set == NULL) 
-        return (NULL);
-    while (*s1 != '\0' && (ft_strchr(set, *s1))) //look for set char in s1
-    {
-        s1++; // move pointer one position to the right
-        len--; // decrease length by one (becouse of s1++)
-    }
-    while (len > 0 && (ft_strchr(set, s1[len - 1]))) //look for set char in s1
-        len--; // move pointer to the left
-
-    ptr = ft_substr(s1, 0, len); //create a new string with the new length
-    return (ptr);
+	len = ft_strlen(s1);
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	while (*s1 != '\0' && (ft_strchr(set, *s1)))
+	{
+		s1++;
+		len--;
+	}
+	while (len > 0 && (ft_strchr(set, s1[len - 1])))
+		len--;
+	ptr = ft_substr(s1, 0, len);
+	return (ptr);
 }
 
 /* int main(void)

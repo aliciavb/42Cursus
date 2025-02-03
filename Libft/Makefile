@@ -6,7 +6,7 @@
 #    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:13:58 by avinals-          #+#    #+#              #
-#    Updated: 2025/01/27 17:09:10 by avinals-         ###   ########.fr        #
+#    Updated: 2025/02/03 21:05:52 by avinals-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,23 @@ SRC = 	ft_isalpha.c \
 
 OBJ = $(SRC:.c=.o)
 
+BONUS = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
+		
+OBJ_BONUS = $(BONUS:.c=.o)
+
 CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
+
+HEADER = libft.h
 
 all: $(NAME)
 

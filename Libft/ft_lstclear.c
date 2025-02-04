@@ -6,11 +6,11 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:06:08 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 22:11:29 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/04 13:02:54 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/* #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
@@ -25,6 +25,23 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 			*lst = temp;
 		}
 	}
+} */
+
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
+
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		if (del)
+			del((*lst)->content);
+		free(*lst);
+		*lst = temp;
+	}
+	*lst = NULL;
 }
 
 /* int main(void)

@@ -6,7 +6,7 @@
 #    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:13:58 by avinals-          #+#    #+#              #
-#    Updated: 2025/02/03 21:05:52 by avinals-         ###   ########.fr        #
+#    Updated: 2025/02/04 13:01:54 by avinals-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ BONUS = ft_lstnew.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c
-		
+
 OBJ_BONUS = $(BONUS:.c=.o)
 
 CC = cc
@@ -72,10 +72,18 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
+bonus: .bonus
+
+.bonus: $(OBJ) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+	touch .bonus
+	
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS) .bonus
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re bonus

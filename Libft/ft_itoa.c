@@ -6,27 +6,21 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:03:44 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 20:16:07 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:19:01 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_itoa_strlen(int n)
+//Returns the number of digits in the integer received as an argument.
+static int	ft_numlen(int nb)
 {
-	int		len;
-	long	nb;
+	int	len;
 
-	nb = n;
-	if (nb == 0)
-		return (1);
 	len = 0;
-	if (nb < 0)
-	{
+	if (nb <= 0)
 		len++;
-		nb *= -1;
-	}
-	while (nb > 0)
+	while (nb != 0)
 	{
 		nb /= 10;
 		len++;
@@ -34,31 +28,40 @@ static int	ft_itoa_strlen(int n)
 	return (len);
 }
 
+//Copies the integer received as an argument to a string.
+static void	ft_strnum(int nb, char *str, int len)
+{
+	str[len--] = '\0';
+	if (nb == 0)
+		str[0] = '0';
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = -nb;
+	}
+	while (nb > 0)
+	{
+		str[len--] = (nb % 10) + '0';
+		nb /= 10;
+	}
+}
+
+//Returns a string representing the integer received as an argument.
 char	*ft_itoa(int n)
 {
 	char	*str;
-	long	db_n;
-	int		str_len;
+	int		len;
 
-	db_n = n;
-	str_len = ft_itoa_strlen(n);
-	str = (char *)malloc(sizeof(char) * (str_len + 1));
+	len = ft_numlen(n);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[str_len--] = '\0';
-	if (db_n == 0)
-		str[0] = '0';
-	else if (db_n < 0)
+	if (n == INT_MIN)
 	{
-		str[0] = '-';
-		db_n *= -1;
+		ft_memcpy(str, "-2147483648", 12);
+		return (str);
 	}
-	while (db_n > 0)
-	{
-		str[str_len] = 48 + (db_n % 10);
-		db_n /= 10;
-		str_len--;
-	}
+	ft_strnum(n, str, len);
 	return (str);
 }
 

@@ -6,77 +6,93 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:02:30 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 20:05:34 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:23:08 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "libft.h"
+#include "libft.h"
 
-static int	word_count(char const *s, char c)
+int	word_counter(const char *s, char c)
 {
-	int	i;
 	int	count;
+	int	in_substring;
 
-	i = 0;
 	count = 0;
-	while (s[i] != '\0')
+	in_substring = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c && in_substring == 0)
 		{
+			in_substring = 1;
 			count++;
-			while (s[i] != c && s[i] != '\0')
-				i++;
 		}
-		else
-			i++;
+		else if (*s == c)
+			in_substring = 0;
+		s++;
 	}
 	return (count);
 }
 
-static char	*substring_creator(const char *s, size_t n)
+char	*word_creator(const char **s, char c)
 {
-	char	*str;
+	const char	*start;
+	char		*word;
+	size_t		len;
 
-	str = malloc(sizeof(char) * (n + 1));
-	if (!str)
+	while (**s == c)
+		(*s)++;
+	start = *s;
+	while (**s && **s != c)
+		(*s)++;
+	len = *s - start;
+	word = malloc(sizeof(char) * (len + 1));
+	if (!word)
 		return (NULL);
-	str = ft_memcpy(str, s, n);
-	str[n] = '\0';
-	return (str);
+	ft_memcpy(word, start, len);
+	word[len] = '\0';
+	return (word);
+}
+
+void	free_all(char **str, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
-	int		i;
-	int		j;
-	int		ptr_counter;
+	int		pos;
 
-	str = malloc(sizeof(char *) * (word_count(s, c) + 1));
-	if (!s || !str)
+	if (!s)
 		return (NULL);
-	i = 0;
-	ptr_counter = 0;
-	while (s[i] != '\0')
+	str = malloc(sizeof(char *) * (word_counter(s, c) + 1));
+	if (!str)
+		return (NULL);
+	pos = 0;
+	while (*s != '\0')
 	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > j)
+		str[pos] = word_creator(&s, c);
+		if (!str[pos])
 		{
-			str[ptr_counter++] = substring_creator(s + j, i - j);
-			if (!str)
-			{
-				return (NULL);
-				free(str);
-			}
+			free_all(str, pos);
+			return (NULL);
 		}
+		if (str[pos][0] == '\0')
+			free(str[pos]);
+		else
+			pos++;
 	}
-	str[ptr_counter] = NULL;
+	str[pos] = NULL;
 	return (str);
-} */
+}
 /* int	main(void)
 {
 	char *s = "  This is a    string to split  ";
@@ -93,92 +109,3 @@ char	**ft_split(char const *s, char c)
 	free(ptr);
 	return (0);
 }  */
-
-#include "libft.h"
-
-static size_t	ft_count_str(char const *s, char c)
-{
-	size_t	i;
-	size_t	str_count;
-
-	i = 0;
-	str_count = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i])
-		{
-			i++;
-			str_count++;
-		}
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (str_count);
-}
-
-static size_t	ft_word_len(const char *src, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i] && src[i] != c)
-		i++;
-	return (i);
-}
-
-static char	*ft_paste_word(const char *src, char c)
-{
-	size_t	i;
-	char	*dest;
-
-	dest = ft_calloc(ft_word_len(src, c) + 1, sizeof(char));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (src[i] && src[i] != c)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-static void	*ft_free(char **arr, size_t iterator)
-{
-	while (iterator > 0)
-		free(arr[--iterator]);
-	free(arr);
-	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**arr;
-	size_t	i;
-	size_t	j;
-
-	arr = (char **)ft_calloc(sizeof(char *), ft_count_str(s, c) + 1);
-	if (!arr)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i])
-		{
-			arr[j] = ft_paste_word((char *)s + i, c);
-			if (arr[j] == NULL)
-				return (ft_free(arr, j));
-			j++;
-		}
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	arr[j] = NULL;
-	return (arr);
-}

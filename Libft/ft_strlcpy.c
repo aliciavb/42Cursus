@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:27:13 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:44:23 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:40:25 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//copies src to dest and returns the lenght of src
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;

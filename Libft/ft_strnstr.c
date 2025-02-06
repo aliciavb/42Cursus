@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:48:51 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 17:11:28 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:44:46 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//finds little in len bytes of big
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;

@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:09:33 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/27 17:23:00 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:57:47 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//writes s and a newline in the file descriptor given
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);

@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:56:49 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:49:04 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:43:09 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//compares n bytes of s1 and s2
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;

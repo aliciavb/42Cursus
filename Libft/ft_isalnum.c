@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:33 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:42:48 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:37:36 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//checks if c is alphanumeric
 int	ft_isalnum(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')

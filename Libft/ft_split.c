@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:02:30 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/06 18:23:08 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:04:52 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//counts the number of words in each string (for malloc in split)
 int	word_counter(const char *s, char c)
 {
 	int	count;
@@ -33,6 +33,7 @@ int	word_counter(const char *s, char c)
 	return (count);
 }
 
+//creates a string from s until c
 char	*word_creator(const char **s, char c)
 {
 	const char	*start;
@@ -53,6 +54,7 @@ char	*word_creator(const char **s, char c)
 	return (word);
 }
 
+//frees memory of all the strings in the array
 void	free_all(char **str, int count)
 {
 	int	i;
@@ -66,6 +68,7 @@ void	free_all(char **str, int count)
 	free(str);
 }
 
+//mallocs an array of strings obtained by splitting s using c as a delimiter
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
@@ -93,6 +96,7 @@ char	**ft_split(char const *s, char c)
 	str[pos] = NULL;
 	return (str);
 }
+
 /* int	main(void)
 {
 	char *s = "  This is a    string to split  ";

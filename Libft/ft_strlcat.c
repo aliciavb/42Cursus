@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 11:27:49 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:44:19 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:40:47 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//concatenates src and dest and returns total len
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	len_dst;

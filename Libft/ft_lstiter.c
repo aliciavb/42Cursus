@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 12:31:58 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/04 12:45:48 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:02:07 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//applies f to the content of each node
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)

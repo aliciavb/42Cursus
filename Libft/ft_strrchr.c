@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:40:46 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:44:43 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:42:42 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//finds last c in s
 char	*ft_strrchr(const char *s, int c)
 {
 	unsigned char	uc;

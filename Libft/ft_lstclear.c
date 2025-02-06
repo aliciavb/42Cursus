@@ -6,29 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:06:08 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/04 13:02:54 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:01:52 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*temp;
-
-	if (lst && del)
-	{
-		while (*lst)
-		{
-			temp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = temp;
-		}
-	}
-} */
-
 #include "libft.h"
-
+//deletes the whole list with the function del
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*temp;

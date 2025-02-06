@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:05:42 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/27 18:35:37 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:55:27 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//applies f to each character in s and stores it in a new ptr
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;

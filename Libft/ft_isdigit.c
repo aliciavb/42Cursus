@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:43:08 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:37:19 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//checks if c is a digit
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

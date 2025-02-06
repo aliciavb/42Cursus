@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:59 by avinals           #+#    #+#             */
-/*   Updated: 2025/01/22 13:36:59 by avinals          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:46:40 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//concatenates s1 and s2 and stores it in a new ptr
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;

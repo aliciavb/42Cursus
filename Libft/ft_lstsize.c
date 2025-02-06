@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:50:05 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 22:12:10 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:00:39 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//strlen for linked lists (counts the nodes)
 int	ft_lstsize(t_list *lst)
 {
 	int		size;

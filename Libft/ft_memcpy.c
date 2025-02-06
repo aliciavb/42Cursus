@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:18:25 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:43:27 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:39:51 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//copies n bytes from src to dest even if they overlap
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*d;

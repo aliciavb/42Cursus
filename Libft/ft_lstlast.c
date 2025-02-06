@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:54:47 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 21:55:46 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:00:50 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//finds the last node in the list
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*temp;

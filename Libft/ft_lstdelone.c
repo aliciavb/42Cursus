@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:58:09 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 22:05:35 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:01:36 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//deletes the node lst with the function del
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst && del)

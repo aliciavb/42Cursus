@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:19:36 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/27 17:23:11 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:59:35 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//writes n in the fd given (recursive because its an int) 
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	nbr;

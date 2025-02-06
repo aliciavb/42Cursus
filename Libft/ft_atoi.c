@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:13:13 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 17:48:48 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:45:07 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//converts string to integer
 int	ft_atoi(const char *nptr)
 {
 	int		sign;

@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:07:58 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/23 12:07:58 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:47:31 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//removes set from the beginning and end of s1 and stores it in a new ptr
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ptr;

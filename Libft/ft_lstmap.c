@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 12:50:37 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/04 13:08:50 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:02:35 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//applies f to the content of each node and stores it in new list
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;

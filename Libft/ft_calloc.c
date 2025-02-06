@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:52:50 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 17:57:47 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:45:23 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//mallocs and initializes mem to 0
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;

@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:16:29 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:43:50 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:38:59 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//sets n bytes of s to c
 void	*ft_memset(void *str, int c, size_t n)
 {
 	unsigned char	*ptr;

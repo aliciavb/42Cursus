@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:27:22 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:43:20 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:37:49 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//checks if c is printable
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)

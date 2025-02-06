@@ -6,13 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:03:44 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/06 18:19:01 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:05:05 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-//Returns the number of digits in the integer received as an argument.
+//strlen but for integers (for malloc in itoa)
 static int	ft_numlen(int nb)
 {
 	int	len;
@@ -28,8 +27,8 @@ static int	ft_numlen(int nb)
 	return (len);
 }
 
-//Copies the integer received as an argument to a string.
-static void	ft_strnum(int nb, char *str, int len)
+//does the conversion from int to string
+static void	ft_iconvert(int nb, char *str, int len)
 {
 	str[len--] = '\0';
 	if (nb == 0)
@@ -46,7 +45,7 @@ static void	ft_strnum(int nb, char *str, int len)
 	}
 }
 
-//Returns a string representing the integer received as an argument.
+//calls conversion, checks for errors and returns the string
 char	*ft_itoa(int n)
 {
 	char	*str;
@@ -61,7 +60,7 @@ char	*ft_itoa(int n)
 		ft_memcpy(str, "-2147483648", 12);
 		return (str);
 	}
-	ft_strnum(n, str, len);
+	ft_iconvert(n, str, len);
 	return (str);
 }
 

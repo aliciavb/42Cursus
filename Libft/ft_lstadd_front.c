@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 20:40:28 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/03 21:54:11 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:00:03 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//adds a new node to the beginning of the list
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst && new)

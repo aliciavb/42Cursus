@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:53:35 by avinals           #+#    #+#             */
-/*   Updated: 2025/01/27 13:45:15 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:46:15 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//creates a substring from s and stores it in a new ptr
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;

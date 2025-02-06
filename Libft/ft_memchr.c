@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:51:20 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 16:36:48 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:43:38 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//finds c in n bytes of s
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*ptr;

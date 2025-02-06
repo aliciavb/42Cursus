@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:13:22 by avinals           #+#    #+#             */
-/*   Updated: 2025/01/22 12:13:22 by avinals          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:45:55 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//duplicates a string storing it in a new ptr
 char	*ft_strdup(const char *s)
 {
 	char	*ptr;

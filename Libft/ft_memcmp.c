@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:39:12 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 16:45:35 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:44:22 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//compares n bytes of s1 and s2
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*ptr1;

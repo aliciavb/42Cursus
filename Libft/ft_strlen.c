@@ -6,12 +6,12 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:45:44 by avinals-          #+#    #+#             */
-/*   Updated: 2025/01/20 15:44:29 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:38:09 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//counts the lenght of the string
 int	ft_strlen(const char *str)
 {
 	int	i;

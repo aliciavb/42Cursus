@@ -13,8 +13,6 @@
 #include "get_next_line.h"
 #include "get_next_line_utils.c"
 
-#include "get_next_line.h"
-
 char	*extract_line(char **storer)
 {
 	int		i = 0;

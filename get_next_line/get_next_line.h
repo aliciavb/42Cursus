@@ -13,14 +13,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef BUFFER_SIZE
-# define BUFFER_SIZE 500
-# endif
-
 # include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <stdlib.h>
 
 #endif

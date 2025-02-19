@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/19 13:29:29 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:44:19 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*extract_line(char **storer)
 {
+	// FALTA AÑADIR UNA CONDICION QUE IMPRIMA LA ULTIMA LINEA AUNQUE NO TENGA SALTO DE LINEA.
+// SI STORER ES EL FINAL DEL ARCHIVO Y NO CONTIENE UN SALTO DE LINEA
+// IMPRIME STORER
 	int		i;
 	char	*line;
 	char	*new_storer;
@@ -57,7 +60,13 @@ char	*get_next_line(int fd)
 	char		buffer[BUFFER_SIZE + 1];
 	ssize_t		bytes_read;
 	char		*temp;
+	static int i;
 
+	if(!i)
+		i = 0;
+	printf("\nstorer = [%s]\n", storer);
+	i++;
+	printf("\n%d\n", i);
 	if (!storer)
 		storer = ft_strdup("");
 	while (!ft_strchr(storer, '\n'))

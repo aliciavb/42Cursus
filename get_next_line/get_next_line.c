@@ -6,27 +6,37 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/19 11:48:41 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:29:29 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "get_next_line_utils.c"
+
+//copies n bytes from src to dest even if they overlap
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+//duplicates a string storing it in a new ptr
+char	*ft_strdup(const char *s);
+
+//finds first c in s
+char	*ft_strchr(const char *s, int c);
+
+char	*ft_strjoin(char const *s1, char const *s2);
+
 char	*extract_line(char **storer)
 {
-	int		i = 0;
+	int		i;
 	char	*line;
 	char	*new_storer;
-	// Find first newline or end of `storer`
+
+	i = 0;
 	while ((*storer)[i] && (*storer)[i] != '\n')
 		i++;
-	// Allocate memory for the line (include '\n' if present)
 	line = malloc(i + 2);
 	if (!line)
 		return (NULL);
 	ft_memcpy(line, *storer, i + 1);
 	line[i + 1] = '\0';
-	// If there is text after `\n`, save it in `new_storer`
 	if ((*storer)[i] == '\n' && (*storer)[i + 1] != '\0')
 	{
 		new_storer = ft_strdup(*storer + i + 1);
@@ -40,51 +50,57 @@ char	*extract_line(char **storer)
 	}
 	return (line);
 }
+
 char	*get_next_line(int fd)
 {
-	static char	*storer = NULL;
+	static char	*storer;
 	char		buffer[BUFFER_SIZE + 1];
 	ssize_t		bytes_read;
 	char		*temp;
-	// Initialize `storer` if it's NULL
+
 	if (!storer)
 		storer = ft_strdup("");
-	// Read from file until a newline is found
 	while (!ft_strchr(storer, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
-			break;
+			return (NULL);
 		buffer[bytes_read] = '\0';
-		// Append new data to `storer`
 		temp = ft_strjoin(storer, buffer);
+/* 		printf("[initial storer: %s]\n",storer);
+		printf("[buffer after read: %s]\n",buffer);
+		printf("[temp after joining storer and buffer: %s]\n",temp); */
 		free(storer);
 		storer = temp;
 	}
-	// Extract exactly one line from `storer`
 	if (storer && *storer)
-		return extract_line(&storer);
-	// Cleanup on EOF
+	{
+		return (extract_line(&storer));
+	}
 	free(storer);
-	storer = NULL;
+	storer = ft_strchr(storer, '\n');
 	return (NULL);
 }
+
 int main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
 	char *line;
+	
 	if (fd < 0)
 	{
 		printf("Error opening file.\n");
 		return (1);
 	}
-	// ✅ Process all lines in the file
+/* 	printf("->MAIN LINE: %s", get_next_line(fd));
+	printf("->MAIN LINE: %s", get_next_line(fd));
+
+	printf("->MAIN LINE: %s", get_next_line(fd)); */
 	while ((line = get_next_line(fd)))
 	{
-		printf("%s", line);
+		printf("->MAIN LINE: %s", line);
 		free(line);
 	}
-	printf("\n");
 	close(fd);
 	return (0);
 }

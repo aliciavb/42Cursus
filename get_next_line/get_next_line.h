@@ -6,15 +6,15 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:24:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/19 11:49:31 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:04:26 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 500
+#  define BUFFER_SIZE 500
 # endif
 
 # include <stddef.h>

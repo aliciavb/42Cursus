@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/02/19 13:44:19 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:37:13 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*extract_line(char **storer)
 {
-	// FALTA AÑADIR UNA CONDICION QUE IMPRIMA LA ULTIMA LINEA AUNQUE NO TENGA SALTO DE LINEA.
-// SI STORER ES EL FINAL DEL ARCHIVO Y NO CONTIENE UN SALTO DE LINEA
-// IMPRIME STORER
 	int		i;
 	char	*line;
 	char	*new_storer;
@@ -54,44 +51,59 @@ char	*extract_line(char **storer)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*handle_eof(char **storer)
 {
-	static char	*storer;
-	char		buffer[BUFFER_SIZE + 1];
-	ssize_t		bytes_read;
-	char		*temp;
-	static int i;
+	char	*line;
 
-	if(!i)
-		i = 0;
-	printf("\nstorer = [%s]\n", storer);
-	i++;
-	printf("\n%d\n", i);
-	if (!storer)
-		storer = ft_strdup("");
-	while (!ft_strchr(storer, '\n'))
+	if (**storer)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			return (NULL);
-		buffer[bytes_read] = '\0';
-		temp = ft_strjoin(storer, buffer);
-/* 		printf("[initial storer: %s]\n",storer);
-		printf("[buffer after read: %s]\n",buffer);
-		printf("[temp after joining storer and buffer: %s]\n",temp); */
-		free(storer);
-		storer = temp;
+		line = ft_strdup(*storer);
+		free(*storer);
+		*storer = NULL;
+		return (line);
 	}
-	if (storer && *storer)
-	{
-		return (extract_line(&storer));
-	}
-	free(storer);
-	storer = ft_strchr(storer, '\n');
+	free(*storer);
+	*storer = NULL;
 	return (NULL);
 }
 
-int main(void)
+char	*read_and_store(int fd, char **storer)
+{
+	char	buffer[BUFFER_SIZE + 1];
+	ssize_t	bytes_read;
+	char	*temp;
+
+	while (!ft_strchr(*storer, '\n'))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			return (handle_eof(storer));
+		buffer[bytes_read] = '\0';
+		temp = ft_strjoin(*storer, buffer);
+		free(*storer);
+		*storer = temp;
+	}
+	return (NULL);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*storer;
+	char		*line;
+
+	if (!storer)
+		storer = ft_strdup("");
+	line = read_and_store(fd, &storer);
+	if (line)
+		return (line);
+	if (storer && *storer)
+		return (extract_line(&storer));
+	free(storer);
+	storer = NULL;
+	return (NULL);
+}
+
+/* int main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
 	char *line;
@@ -101,15 +113,11 @@ int main(void)
 		printf("Error opening file.\n");
 		return (1);
 	}
-/* 	printf("->MAIN LINE: %s", get_next_line(fd));
-	printf("->MAIN LINE: %s", get_next_line(fd));
-
-	printf("->MAIN LINE: %s", get_next_line(fd)); */
 	while ((line = get_next_line(fd)))
 	{
-		printf("->MAIN LINE: %s", line);
+		printf("->MAIN LINE: %s\n", line);
 		free(line);
 	}
 	close(fd);
 	return (0);
-}
+} */

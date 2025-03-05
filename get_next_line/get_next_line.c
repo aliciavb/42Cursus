@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/03/05 17:43:13 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:33:15 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char	*read_and_store(int fd, char **storer)
 		{
 			free(buffer);
 			return (handle_eof(storer));
+			free (storer);
 		}
 		buffer[bytes_read] = '\0';
 		temp = ft_strjoin(*storer, buffer);
@@ -94,13 +95,13 @@ char	*read_and_store(int fd, char **storer)
 char	*get_next_line(int fd)
 {
 	static char	*storer = NULL;
-	char		*line;
+	char		*line_read;
 
 	if (!storer)
 		storer = ft_strdup("");
-	line = read_and_store(fd, &storer);
-	if (line)
-		return (line);
+	line_read = read_and_store(fd, &storer);
+	if (line_read)
+		return (line_read);
 	if (storer && *storer)
 		return (extract_line(&storer));
 	free(storer);
@@ -110,7 +111,7 @@ char	*get_next_line(int fd)
 
 /* int main(void)
 {
-	int fd = open("potter.txt", O_RDONLY);
+	int fd = open("test.txt", O_RDONLY);
 	char *line;
 	
 	if (fd < 0)

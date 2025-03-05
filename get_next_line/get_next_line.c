@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/03/01 16:37:13 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:43:13 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,31 @@ char	*handle_eof(char **storer)
 
 char	*read_and_store(int fd, char **storer)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buffer;
 	ssize_t	bytes_read;
 	char	*temp;
 
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	while (!ft_strchr(*storer, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
+		{
+			free(buffer);
 			return (handle_eof(storer));
+		}
 		buffer[bytes_read] = '\0';
 		temp = ft_strjoin(*storer, buffer);
 		free(*storer);
 		*storer = temp;
 	}
+	free(buffer);
 	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*storer;
+	static char	*storer = NULL;
 	char		*line;
 
 	if (!storer)
@@ -105,7 +110,7 @@ char	*get_next_line(int fd)
 
 /* int main(void)
 {
-	int fd = open("test.txt", O_RDONLY);
+	int fd = open("potter.txt", O_RDONLY);
 	char *line;
 	
 	if (fd < 0)

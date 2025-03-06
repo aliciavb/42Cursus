@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/03/05 18:33:15 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:39:35 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ char	*read_and_store(int fd, char **storer)
 	while (!ft_strchr(*storer, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
+		if (bytes_read < 0)
 		{
-			free(buffer);
-			return (handle_eof(storer));
-			free (storer);
+			free(*storer);
+			*storer = NULL;
+			return (free(buffer), NULL);
 		}
+		if (bytes_read == 0)
+			return (free(buffer), handle_eof(storer));
 		buffer[bytes_read] = '\0';
 		temp = ft_strjoin(*storer, buffer);
 		free(*storer);
@@ -97,6 +99,8 @@ char	*get_next_line(int fd)
 	static char	*storer = NULL;
 	char		*line_read;
 
+	if (fd < 0)
+		return (NULL);
 	if (!storer)
 		storer = ft_strdup("");
 	line_read = read_and_store(fd, &storer);
@@ -111,7 +115,7 @@ char	*get_next_line(int fd)
 
 /* int main(void)
 {
-	int fd = open("test.txt", O_RDONLY);
+	int fd = open("empty.txt", O_RDONLY);
 	char *line;
 	
 	if (fd < 0)

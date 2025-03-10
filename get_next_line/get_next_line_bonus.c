@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 13:01:32 by avinals-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:06:02 by avinals-         ###   ########.fr       */
+/*   Created: 2025/03/10 15:35:24 by avinals-          #+#    #+#             */
+/*   Updated: 2025/03/10 16:05:56 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,38 +87,50 @@ char	*read_and_store(int fd, char **storer)
 
 char	*get_next_line(int fd)
 {
-	static char	*storer = NULL;
+	static char	*storer[4096];
 	char		*line_read;
 
 	if (fd < 0)
 		return (NULL);
-	if (!storer)
-		storer = ft_strdup("");
-	line_read = read_and_store(fd, &storer);
+	if (!storer[fd])
+		storer[fd] = ft_strdup("");
+	line_read = read_and_store(fd, &storer[fd]);
 	if (line_read)
 		return (line_read);
-	if (storer && *storer)
-		return (extract_line(&storer));
-	free(storer);
-	storer = NULL;
+	if (storer[fd] && *storer[fd])
+		return (extract_line(&storer[fd]));
+	free(storer[fd]);
+	storer[fd] = NULL;
 	return (NULL);
 }
 
 /* int main(void)
 {
-	int fd = open("test.txt", O_RDONLY);
+	int fd1 = open("test.txt", O_RDONLY);
+	int fd2 = open("single.txt", O_RDONLY);
 	char *line;
 	
-	if (fd < 0)
+	if (fd1 < 0 || fd2 < 0)
 	{
 		printf("Error opening file.\n");
 		return (1);
 	}
-	while ((line = get_next_line(fd)))
+	if ((line = get_next_line(fd1)))
 	{
-		printf("->MAIN LINE: %s\n", line);
+		printf("->LINE fd1: %s\n", line);
 		free(line);
 	}
-	close(fd);
+	if ((line = get_next_line(fd2)))
+	{
+		printf("->LINE fd2: %s\n", line);
+		free(line);
+	}
+	if ((line = get_next_line(fd1)))
+	{
+		printf("->LINE fd1: %s\n", line);
+		free(line);
+	}
+	close(fd1);
+	close(fd2);
 	return (0);
 } */

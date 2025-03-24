@@ -6,34 +6,32 @@
 #    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/13 11:47:25 by avinals           #+#    #+#              #
-#    Updated: 2025/03/17 14:02:41 by avinals-         ###   ########.fr        #
+#    Updated: 2025/03/24 15:26:08 by avinals-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-// LIBFT_DIR = path/to/libft
-// LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = ft_printf.c
-OBJS = $(SRCS:.c=.o)
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+
+SRC = ft_printf.c \
+		ft_print_chars.c \
+		ft_print_nbrs.c \
+		ft_print_bases.c \
+		
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-    ar rcs $(NAME) $(OBJS) $
-
-
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-    $(RM) $(OBJS)
-    $(MAKE) -C clean
+	rm -f $(OBJ)
 
 fclean: clean
-    $(RM) $(NAME)
-    $(MAKE) -C fclean
+	rm -f $(NAME)
 
 re: fclean all
 

@@ -11,15 +11,36 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "Libft/libft.h"
+#include <stdio.h> // Para pruebas, eliminar en producción
 
-void	push_swap(t_list stack_a)
+int	main(int argc, char **argv)
 {
-	
-}
+	t_node	*stack_a;
+	t_node	*temp;
+	int		i;
+	long	nb;
 
-
-int main(void)
-{
-	t_list stack_a = "2 1 3";
-	t_list stack_b = "";
+	stack_a = NULL;
+	i = 1;
+	while (i < argc)
+	{
+		if (!is_number(argv[i]))
+			exit_error();
+		nb = ft_atoi(argv[i]);
+		if (nb > 2147483647 || nb < -2147483648)
+			exit_error();
+		append_node(&stack_a, new_node((int)nb));
+		i++;
+	}
+	if (has_duplicates(stack_a))
+		exit_error();
+	temp = stack_a;
+	while (temp)
+	{
+		ft_printf("%d\n", temp->value);
+		temp = temp->next;
+	}
+	free_stack(&stack_a);
+	return (0);
 }

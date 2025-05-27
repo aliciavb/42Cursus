@@ -10,13 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-#define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-typedef struct s_list
+# include "Libft/libft.h" 
+# include <stddef.h> 
+
+typedef struct s_node
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	int				value;
+	struct s_node	*next;
+}	t_node;
+
+// stack_utils.c
+t_node	*new_node(int value);
+void	append_node(t_node **stack, t_node *new);
+void	free_stack(t_node **stack);
+int		stack_size(t_node *stack);
+
+// error.c
+void	exit_error(void);
+
+// parser.c
+int		is_number(char *str);
+int		has_duplicates(t_node *stack);
+
+// operations.c
+void	sa(t_node **stack_a);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	pa(t_node **stack_a, t_node **stack_b);
 
 #endif

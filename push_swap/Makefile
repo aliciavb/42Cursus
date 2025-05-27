@@ -15,20 +15,25 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = push_swap.c \
+LIBFT_DIR = Libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+SRC = push_swap.c stack_utils.c parser.c error.c
 		
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -o $(NAME) $(OBJ) $(LIBFT)
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
 

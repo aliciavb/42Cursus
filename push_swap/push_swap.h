@@ -39,5 +39,11 @@ int		has_duplicates(t_node *stack);
 void	sa(t_node **stack_a);
 void	pb(t_node **stack_a, t_node **stack_b);
 void	pa(t_node **stack_a, t_node **stack_b);
+void	ra(t_node **stack);
+void	rra(t_node **stack);
+
+// sort_small.c
+void	sort_3(t_node **stack);
+int		is_sorted(t_node *stack);
 
 #endif

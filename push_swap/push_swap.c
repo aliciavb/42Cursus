@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 #include "Libft/libft.h"
-#include <stdio.h> // Para pruebas, eliminar en producción
 
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
-	t_node	*temp;
+	t_node	*stack_b;
 	int		i;
 	long	nb;
 
 	stack_a = NULL;
+	stack_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
@@ -35,12 +35,13 @@ int	main(int argc, char **argv)
 	}
 	if (has_duplicates(stack_a))
 		exit_error();
-	temp = stack_a;
-	while (temp)
-	{
-		ft_printf("%d\n", temp->value);
-		temp = temp->next;
-	}
+
+	if (stack_size(stack_a) == 3)
+	sort_3(&stack_a);
+
+	// más adelante: else if (size <= 5) sort_5(...); etc.
+
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

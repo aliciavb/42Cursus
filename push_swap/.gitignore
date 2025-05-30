@@ -1,0 +1,20 @@
+# Objetos compilados
+*.o
+
+# Ejecutables
+push_swap
+checker
+
+# Archivos generados por Make
+*.out
+*.a
+
+# Libft compilada
+libft/libft.a
+
+# Carpetas de compilación
+build/
+bin/
+
+# Visualizador (ajusta si está en otra ruta)
+push_swap_visualizer/

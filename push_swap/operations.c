@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:51:38 by avinals           #+#    #+#             */
-/*   Updated: 2025/05/27 17:52:56 by avinals          ###   ########.fr       */
+/*   Updated: 2025/05/30 13:23:05 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,42 @@ void	pa(t_node **stack_a, t_node **stack_b)
 	temp->next = *stack_a;
 	*stack_a = temp;
 	write(1, "pa\n", 3);
+}
+
+void	ra(t_node **stack)
+{
+	t_node	*first;
+	t_node	*last;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	first = *stack;
+	*stack = first->next;
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = first;
+	first->next = NULL;
+	write(1, "ra\n", 3);
+}
+
+void	rra(t_node **stack)
+{
+	t_node	*prev;
+	t_node	*last;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	prev = NULL;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	if (prev)
+		prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	write(1, "rra\n", 4);
 }

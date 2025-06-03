@@ -39,6 +39,21 @@ int	main(int argc, char **argv)
 	if (stack_size(stack_a) == 3)
 	sort_3(&stack_a);
 
+	if (!is_sorted(stack_a))
+{
+	index_stack(stack_a);
+	if (stack_size(stack_a) == 2)
+		sort_2(&stack_a);
+	else if (stack_size(stack_a) == 3)
+		sort_3(&stack_a);
+	else
+	{
+		push_all_but_3(&stack_a, &stack_b);
+		sort_3(&stack_a);
+		// Aquí vendrá la lógica de reinserción desde B
+	}
+}
+
 	// más adelante: else if (size <= 5) sort_5(...); etc.
 
 	free_stack(&stack_a);

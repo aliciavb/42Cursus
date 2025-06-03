@@ -46,4 +46,7 @@ void	rra(t_node **stack);
 void	sort_3(t_node **stack);
 int		is_sorted(t_node *stack);
 
+// push.c
+void	push_all_but_3(t_node **a, t_node **b);
+
 #endif

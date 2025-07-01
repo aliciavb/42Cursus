@@ -11,52 +11,28 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "Libft/libft.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
-	int		i;
-	long	nb;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	i = 1;
-	while (i < argc)
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
+		ac = ft_split(av[1], ' ');
+	init_stack_a(&a, av + 1);
+	if (!stack_sorted(a))
 	{
-		if (!is_number(argv[i]))
-			exit_error();
-		nb = ft_atoi(argv[i]);
-		if (nb > 2147483647 || nb < -2147483648)
-			exit_error();
-		append_node(&stack_a, new_node((int)nb));
-		i++;
+		if (stack_len(a) == 2)
+			sa(&a, false);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stacks(&a, &b);
 	}
-	if (has_duplicates(stack_a))
-		exit_error();
-
-	if (stack_size(stack_a) == 3)
-	sort_3(&stack_a);
-
-	if (!is_sorted(stack_a))
-{
-	index_stack(stack_a);
-	if (stack_size(stack_a) == 2)
-		sort_2(&stack_a);
-	else if (stack_size(stack_a) == 3)
-		sort_3(&stack_a);
-	else
-	{
-		push_all_but_3(&stack_a, &stack_b);
-		sort_3(&stack_a);
-		// Aquí vendrá la lógica de reinserción desde B
-	}
-}
-
-	// más adelante: else if (size <= 5) sort_5(...); etc.
-
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	free_stack(&a);
 	return (0);
 }

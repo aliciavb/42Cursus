@@ -13,40 +13,62 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "Libft/libft.h" 
-# include <stddef.h> 
+# include <stdbool.h> 
+# include <limits.h> 
+# include "Libft/libft.h"
 
-typedef struct s_node
+typedef struct s_stack_node 
 {
-	int				value;
-	struct s_node	*next;
-}	t_node;
+	int					nbr; 
+	int					index; 
+	int					push_cost;
+	bool				above_median; 
+	bool				cheapest;
+	struct s_stack_node	*target_node; 
+	struct s_stack_node	*next;
+	struct s_stack_node	*prev; 
+}	t_stack_node; 
 
-// stack_utils.c
-t_node	*new_node(int value);
-void	append_node(t_node **stack, t_node *new);
-void	free_stack(t_node **stack);
-int		stack_size(t_node *stack);
+//errors
+int				error_syntax(char *str_n); 
+int				error_duplicate(t_stack_node *a, int n);
+void			free_stack(t_stack_node **stack);
+void			free_errors(t_stack_node **a);
 
-// error.c
-void	exit_error(void);
+//Stack initiation
+void			init_stack_a(t_stack_node **a, char **argv);
+char			**split(char *s, char c); 
 
-// parser.c
-int		is_number(char *str);
-int		has_duplicates(t_node *stack);
+//Nodes initiation
+void			init_nodes_a(t_stack_node *a, t_stack_node *b); 
+void			init_nodes_b(t_stack_node *a, t_stack_node *b); 
+void			current_index(t_stack_node *stack); 
+void			set_cheapest(t_stack_node *stack);
+t_stack_node	*get_cheapest(t_stack_node *stack); 
+void			prep_for_push(t_stack_node **s, t_stack_node *n, char c); 
 
-// operations.c
-void	sa(t_node **stack_a);
-void	pb(t_node **stack_a, t_node **stack_b);
-void	pa(t_node **stack_a, t_node **stack_b);
-void	ra(t_node **stack);
-void	rra(t_node **stack);
+//utils
+int				stack_len(t_stack_node *stack); 
+t_stack_node	*find_last(t_stack_node *stack);
+bool			stack_sorted(t_stack_node *stack); 
+t_stack_node	*find_min(t_stack_node *stack); 
+t_stack_node	*find_max(t_stack_node *stack); 
 
-// sort_small.c
-void	sort_3(t_node **stack);
-int		is_sorted(t_node *stack);
+//movements
+void			sa(t_stack_node **a, bool print);
+void			sb(t_stack_node **b, bool print);
+void			ss(t_stack_node **a, t_stack_node **b, bool print);
+void			ra(t_stack_node **a, bool print);
+void			rb(t_stack_node **b, bool print);
+void			rr(t_stack_node **a, t_stack_node **b, bool print);
+void			rra(t_stack_node **a, bool print);
+void			rrb(t_stack_node **b, bool print);
+void			rrr(t_stack_node **a, t_stack_node **b, bool print);
+void			pa(t_stack_node **a, t_stack_node **b, bool print);
+void			pb(t_stack_node **b, t_stack_node **a, bool print);
 
-// push.c
-void	push_all_but_3(t_node **a, t_node **b);
+//algorithm
+void			sort_three(t_stack_node **a);
+void			sort_stacks(t_stack_node **a, t_stack_node **b); 
 
 #endif

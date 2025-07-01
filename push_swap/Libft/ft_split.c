@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//counts the number of words in each string (for malloc in split)
+//remade for push_swap, not original libft split
 int	word_counter(const char *s, char c)
 {
 	int	count;
@@ -33,7 +33,6 @@ int	word_counter(const char *s, char c)
 	return (count);
 }
 
-//creates a string from s until c
 char	*word_creator(const char **s, char c)
 {
 	const char	*start;
@@ -54,7 +53,6 @@ char	*word_creator(const char **s, char c)
 	return (word);
 }
 
-//frees memory of all the strings in the array
 void	free_all(char **str, int count)
 {
 	int	i;
@@ -68,7 +66,6 @@ void	free_all(char **str, int count)
 	free(str);
 }
 
-//mallocs an array of strings obtained by splitting s using c as a delimiter
 char	**ft_split(char const *s, char c)
 {
 	char	**str;

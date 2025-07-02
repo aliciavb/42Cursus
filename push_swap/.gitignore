@@ -34,6 +34,9 @@ subject.pdf
 *.debug
 *.tmp
 
+# To do list
+todo.md
+
 # Archivos específicos de IDEs
 .vscode/
 .idea/

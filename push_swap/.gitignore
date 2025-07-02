@@ -27,6 +27,9 @@ es.subject.pdf
 subject.pdf
 *.pdf
 
+# Zone identifiers
+*:Zone.Identifier
+
 # Archivos de debugging temporal
 *.debug
 *.tmp

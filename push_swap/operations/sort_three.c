@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:04:13 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/01 19:05:12 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/02 12:48:26 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_three(t_stack_node **a)
 
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
-		ra(a, false); 
+		ra(a, false);
 	else if ((*a)->next == biggest_node)
 		rra(a, false);
 	if ((*a)->nbr > (*a)->next->nbr)

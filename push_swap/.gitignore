@@ -4,6 +4,7 @@
 # Ejecutables
 push_swap
 checker
+checker_linux
 
 # Archivos generados por Make
 *.out
@@ -16,5 +17,24 @@ libft/libft.a
 build/
 bin/
 
-# Visualizador (ajusta si está en otra ruta)
+# Visualizador
 push_swap_visualizer/
+push_swap_visualizer
+*.visualizer
+
+# Documentos del proyecto
+es.subject.pdf
+subject.pdf
+*.pdf
+
+# Archivos de debugging temporal
+*.debug
+*.tmp
+
+# Archivos específicos de IDEs
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

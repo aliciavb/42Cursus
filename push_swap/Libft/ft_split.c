@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//remade for push_swap, not original libft split
+
 int	word_counter(const char *s, char c)
 {
 	int	count;

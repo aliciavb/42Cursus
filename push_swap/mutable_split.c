@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:19:33 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/02 13:57:47 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/02 14:28:17 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,5 @@ char **split(char *s, char c)
 		i++;
 	}
 	result_array[i] = NULL;
-	// Debug con flush explícito
-    printf("DEBUG - Array después de split:\n");
-    fflush(stdout);  // Forzar flush
-    for (int j = 0; result_array[j]; j++)
-    {
-        printf("result_array[%d] = '%s'\n", j, result_array[j]);
-        fflush(stdout);
-    }
-    printf("result_array[%d] = NULL\n", i);
-    fflush(stdout);
 	return (result_array);
 }

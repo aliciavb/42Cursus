@@ -15,24 +15,24 @@ NAME 			= push_swap
 # Directories
 LIBFT_DIR		= ./Libft
 OBJ_DIR			= obj/
-OPERATIONS_DIR	= operations/
 
 # Files
 LIBFT			= $(LIBFT_DIR)/libft.a
 
-SRCS			= push_swap.c \
-				stack_init.c \
-				error.c \
-				stack_utils.c \
-				init_a_to_b.c \
-				init_b_to_a.c \
-				mutable_split.c \
-				$(OPERATIONS_DIR)swap.c \
-				$(OPERATIONS_DIR)push.c \
-				$(OPERATIONS_DIR)rotate.c \
-				$(OPERATIONS_DIR)rev_rotate.c \
-				$(OPERATIONS_DIR)sort_three.c \
-				$(OPERATIONS_DIR)sort_stacks.c
+SRCS			= main/push_swap.c \
+				stack/stack_init.c \
+				stack/stack_utils.c \
+				error/error.c \
+				parsing/mutable_split.c \
+				algorithms/init_a_to_b.c \
+				algorithms/init_b_to_a.c \
+				algorithms/sort_three.c \
+				algorithms/sort_stacks.c \
+				algorithms/stack_moves.c \
+				operations/swap.c \
+				operations/push.c \
+				operations/rotate.c \
+				operations/rev_rotate.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)%.o)
 

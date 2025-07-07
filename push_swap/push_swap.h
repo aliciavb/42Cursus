@@ -84,4 +84,13 @@ void			sort_three(t_stack_node **a);
 //sort_stack.c
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 
+//stack_moves.c
+void			rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
+void			rev_rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
+void			move_a_to_b(t_stack_node **a, t_stack_node **b);
+void			move_b_to_a(t_stack_node **a, t_stack_node **b);
+void			min_on_top(t_stack_node **a);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:32:57 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 14:04:02 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 17:48:48 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_handler(int signal, siginfo_t *info, void *context)
 {
-	static unsigned char	curr_char;
-	static int				bit_index;
+	static unsigned char	curr_char = 0;
+	static int				bit_index = 0;
 
-	curr_char = 0;
-	bit_index = 0;
 	(void)context;
 	curr_char |= (signal == SIGUSR1);
 	bit_index++;

@@ -6,23 +6,25 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:31:43 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 13:53:04 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 17:50:39 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_handler(int signal)
+void ft_handler(int signal)
 {
-	static unsigned char	current_char;
-	static int				bit_index;
+	static unsigned char current_char = 0;
+	static int bit_index = 0;
 
-	current_char = 0;
-	bit_index = 0;
 	current_char |= (signal == SIGUSR1);
 	bit_index++;
 	if (bit_index == 8)
 	{
+		if (current_char == '\0')
+			ft_printf("\n");
+		else
+			ft_printf("%c", current_char);
 		bit_index = 0;
 		current_char = 0;
 	}
@@ -30,7 +32,7 @@ void	ft_handler(int signal)
 		current_char <<= 1;
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
 	(void)av;
 	if (ac != 1)

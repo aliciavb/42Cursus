@@ -6,38 +6,66 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:32:55 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 12:54:30 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 13:05:01 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int g_client_pid = 0;
+static int g_received = 0;
 
-void	ft_handler(int signal, siginfo_t *info, void *context)
+void sigconfirm(int signal)
 {
-    static unsigned char	current_char = 0;
-    static int				bit_index = 0;
-
-    (void)context;
-    g_client_pid = info->si_pid;
-    
-    current_char |= (signal == SIGUSR1);
-    bit_index++;
-    
-    if (bit_index == 8)
-    {
-        if (current_char == '\0')
-            ft_printf("\n");
-        else
-            ft_printf("%c", current_char);
-        bit_index = 0;
-        current_char = 0;
-    }
-    else
-        current_char <<= 1;
-    
-    // Confirma cada señal recibida
-    kill(g_client_pid, SIGUSR1);
+	(void)signal;
+	g_received = 1;
 }
 
+void ft_send_signal(int pid, unsigned char character)
+{
+	int i;
+	unsigned char temp_char;
+
+	i = 8;
+	while (i > 0)
+	{
+		i--;
+		temp_char = character >> i;
+
+		g_received = 0;
+		if (temp_char % 2 == 0)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+
+		// Espera confirmación del server
+		while (!g_received)
+			usleep(50);
+	}
+}
+
+int main(int ac, char **av)
+{
+	int pid;
+	const char *message;
+	int i;
+
+	if (ac != 3)
+	{
+		ft_printf("Error. Try: ./client <PID> <MESSAGE>\n");
+		return (1);
+	}
+
+	pid = ft_atoi(av[1]);
+	message = av[2];
+
+	// Configura el handler para recibir confirmaciones
+	signal(SIGUSR1, sigconfirm);
+
+	i = 0;
+	while (message[i])
+		ft_send_signal(pid, message[i++]);
+	ft_send_signal(pid, '\0');
+
+	ft_printf("Message sent successfully!\n");
+	return (0);
+}

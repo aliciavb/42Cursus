@@ -6,58 +6,50 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:31:40 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/11 14:17:16 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 12:48:21 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/* void	sigconfirm(int signal)
+void ft_send_signal(int pid, unsigned char character)
 {
-	if (signal == SIGUSR1)
-		ft_printf("Signal received: SIGUSR1\n");
-	else
-		ft_printf("Signal received: SIGUSR2\n");
-} */
+    int i;
+    unsigned char temp_char;
 
-void	ft_send_bits(int pid, char i)
-{
-	int	bit;
-
-	bit = 0;
-	while (bit < 8)
-	{
-		if ((i & (0x01 << bit)) != 0)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		usleep(100);
-		bit++;
-	}
+    i = 8;
+    temp_char = character;
+    while (i > 0)
+    {
+        i--;
+        temp_char = character >> i;
+        if (temp_char % 2 == 0)
+            kill(pid, SIGUSR2);
+        else
+            kill(pid, SIGUSR1);
+        usleep(500);  // Aumentado de 42 a 500 microsegundos
+    }
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	int	pid;
-	int	i;
+    int pid;
+    const char *message;
+    int i;
 
-	i = 0;
-	if (ac == 3)
-	{
-		pid = ft_atoi(av[1]);
-		while (av[2][i] != '\0')
-		{
-			//signal(SIGUSR1, sigconfirm);
-			//signal(SIGUSR2, sigconfirm);
-			ft_send_bits(pid, av[2][i]);
-			i++;
-		}
-		ft_send_bits(pid, '\n');
-	}
-	else
-	{
-		ft_printf("Error. Try: ./client <PID> <MESSAGE>\n");
-		return (1);
-	}
-	return (0);
+    if (ac != 3)
+    {
+        ft_printf("Error. Try: ./client <PID> <MESSAGE>\n");
+        return (1);
+    }
+
+    pid = ft_atoi(av[1]);
+    message = av[2];
+    i = 0;
+
+    while (message[i])
+        ft_send_signal(pid, message[i++]);
+    ft_send_signal(pid, '\0');
+
+    return (0);
 }

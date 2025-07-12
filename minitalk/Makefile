@@ -10,19 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= minitalk
-SERVER_NAME 	= server
+SERVER_NAME		= server
 CLIENT_NAME		= client
+SERVER_B_NAME	= server_b
+CLIENT_B_NAME	= client_b
 
-# Directories
 LIBFT_DIR		= ./Libft
 OBJ_DIR			= obj/
 
-# Files
 LIBFT			= $(LIBFT_DIR)/libft.a
 
 SERVER_SRC		= server.c
 CLIENT_SRC		= client.c
+SERVER_B_SRC	= server_bonus.c
+CLIENT_B_SRCE	= client_bonus.c
 
 SERVER_OBJ		= $(OBJ_DIR)server.o
 CLIENT_OBJ		= $(OBJ_DIR)client.o
@@ -39,9 +40,7 @@ RED				= \033[0;31m
 RESET			= \033[0m
 
 # Rules
-all:	$(NAME)
-
-$(NAME): $(SERVER_NAME) $(CLIENT_NAME)
+all:	$(SERVER_NAME) $(CLIENT_NAME)
 
 $(SERVER_NAME): $(LIBFT) $(SERVER_OBJ)
 	@echo "$(GREEN)Linking $(SERVER_NAME)...$(RESET)"
@@ -55,7 +54,7 @@ $(CLIENT_NAME): $(LIBFT) $(CLIENT_OBJ)
 
 $(LIBFT):
 	@echo "$(GREEN)Building libft...$(RESET)"
-	@make -C $(LIBFT_DIR)
+	@make -s -C $(LIBFT_DIR)
 
 $(OBJ_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
@@ -65,12 +64,12 @@ $(OBJ_DIR)%.o: %.c
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
 	@$(RM) -r $(OBJ_DIR)
-	@make clean -C $(LIBFT_DIR)
+	@make clean -s -C $(LIBFT_DIR)
 
 fclean: clean
 	@echo "$(RED)Cleaning executables...$(RESET)"
 	@$(RM) $(SERVER_NAME) $(CLIENT_NAME)
-	@make fclean -C $(LIBFT_DIR)
+	@make fclean -s -C $(LIBFT_DIR)
 
 re: fclean all
 

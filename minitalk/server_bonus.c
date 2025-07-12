@@ -12,29 +12,65 @@
 
 #include "minitalk.h"
 
+static char	*g_buffer = NULL;
+
 void	ft_handler(int signal, siginfo_t *info, void *context)
 {
-	static unsigned char	curr_char = 0;
+	static unsigned char	current_char = 0;
 	static int				bit_index = 0;
+	static int				buffer_len = 0;
+	static int				buffer_size = 0;
 
 	(void)context;
-	curr_char |= (signal == SIGUSR1);
+	current_char = (current_char << 1) | (signal == SIGUSR1);
 	bit_index++;
 	if (bit_index == 8)
 	{
-		if (curr_char == '\0')
-			ft_printf("\n");
+		if (current_char == '\0')
+		{
+			if (g_buffer)
+			{
+				g_buffer[buffer_len] = '\0';
+				ft_printf("%s\n", g_buffer);
+				free(g_buffer);
+				g_buffer = NULL;
+			}
+			else
+				ft_printf("\n");
+			buffer_len = 0;
+			buffer_size = 0;
+		}
 		else
-			ft_printf("%c", curr_char);
+		{
+			if (buffer_len >= buffer_size)
+			{
+				buffer_size = buffer_size == 0 ? 1024 : buffer_size * 2;
+				char *new_buffer = malloc(buffer_size);
+				if (!new_buffer)
+				{
+					ft_printf("\n[ERROR] Memory allocation failed\n");
+					if (g_buffer)
+						free(g_buffer);
+					g_buffer = NULL;
+					buffer_len = 0;
+					buffer_size = 0;
+					bit_index = 0;
+					current_char = 0;
+					return ;
+				}
+				if (g_buffer)
+				{
+					ft_memcpy(new_buffer, g_buffer, buffer_len);
+					free(g_buffer);
+				}
+				g_buffer = new_buffer;
+			}
+			g_buffer[buffer_len++] = current_char;
+		}
 		bit_index = 0;
-		curr_char = 0;
+		current_char = 0;
 	}
-	else
-		curr_char <<= 1;
-	if (signal == SIGUSR1)
-		kill(info->si_pid, SIGUSR1);
-	else if (signal == SIGUSR2)
-		kill(info->si_pid, SIGUSR2);
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(int ac, char **av)

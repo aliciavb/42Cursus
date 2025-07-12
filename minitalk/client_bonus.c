@@ -12,29 +12,29 @@
 
 #include "minitalk.h"
 
-void	handle_read_receipt(int signal)
+static int	g_received = 0;
+
+void	sigconfirm(int signal)
 {
-	if (signal == SIGUSR1)
-		ft_printf("Received bit 1 confirmation\n");
-	else if (signal == SIGUSR2)
-		ft_printf("Received bit 0 confirmation\n");
+	(void)signal;
+	g_received = 1;
 }
 
 void	ft_send_signal(int pid, unsigned char character)
 {
-	int				i;
-	unsigned char	temp_char;
+	int	i;
 
-	i = 8;
-	while (i > 0)
+	i = 7;
+	while (i >= 0)
 	{
-		i--;
-		temp_char = character >> i;
-		if (temp_char % 2 == 0)
-			kill(pid, SIGUSR2);
-		else
+		g_received = 0;
+		if ((character >> i) & 1)
 			kill(pid, SIGUSR1);
-		usleep(1000);
+		else
+			kill(pid, SIGUSR2);
+		while (!g_received)
+			usleep(50);
+		i--;
 	}
 }
 
@@ -44,8 +44,6 @@ int	main(int ac, char **av)
 	const char	*message;
 	int			i;
 
-	signal(SIGUSR1, handle_read_receipt);
-	signal(SIGUSR2, handle_read_receipt);
 	if (ac != 3)
 	{
 		ft_printf("Error. Try: ./client_bonus <PID> <MESSAGE>\n");
@@ -53,9 +51,12 @@ int	main(int ac, char **av)
 	}
 	pid = ft_atoi(av[1]);
 	message = av[2];
+	signal(SIGUSR1, sigconfirm);
+	signal(SIGUSR2, sigconfirm);
 	i = 0;
 	while (message[i])
 		ft_send_signal(pid, message[i++]);
 	ft_send_signal(pid, '\0');
+	ft_printf("Message sent successfully!\n");
 	return (0);
 }

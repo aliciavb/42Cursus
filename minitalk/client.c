@@ -14,19 +14,17 @@
 
 void	ft_send_signal(int pid, unsigned char character)
 {
-	int				i;
-	unsigned char	temp_char;
+	int	i;
 
-	i = 8;
-	while (i > 0)
+	i = 7;
+	while (i >= 0)
 	{
-		i--;
-		temp_char = character >> i;
-		if (temp_char % 2 == 0)
-			kill(pid, SIGUSR2);
-		else
+		if ((character >> i) & 1)
 			kill(pid, SIGUSR1);
-		usleep(1000);
+		else
+			kill(pid, SIGUSR2);
+		usleep(500);
+		i--;
 	}
 }
 

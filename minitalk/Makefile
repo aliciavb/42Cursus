@@ -23,7 +23,7 @@ LIBFT			= $(LIBFT_DIR)/libft.a
 SERVER_SRC		= server.c
 CLIENT_SRC		= client.c
 SERVER_B_SRC	= server_bonus.c
-CLIENT_B_SRCE	= client_bonus.c
+CLIENT_B_SRC	= client_bonus.c
 
 SERVER_OBJ		= $(OBJ_DIR)server.o
 CLIENT_OBJ		= $(OBJ_DIR)client.o

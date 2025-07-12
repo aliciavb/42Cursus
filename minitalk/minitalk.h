@@ -11,18 +11,21 @@
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
-#define MINITALK_H
+# define MINITALK_H
 
-#include <signal.h>
-#include <unistd.h>
-#include "Libft/libft.h"
+# define _GNU_SOURCE
+# include <signal.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <stdlib.h>
+# include "Libft/libft.h"
 
 // Colors for debug output
-#define GRAY "\033[0;90m"
-#define GREEN "\033[0;32m"
-#define CYAN "\033[0;36m"
-#define YELLOW "\033[0;33m"
-#define RESET "\033[0m"
-#define BOLD "\033[1m"
+# define GRAY "\033[0;90m"
+# define GREEN "\033[0;32m"
+# define CYAN "\033[0;36m"
+# define YELLOW "\033[0;33m"
+# define RESET "\033[0m"
+# define BOLD "\033[1m"
 
 #endif

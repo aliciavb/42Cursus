@@ -6,18 +6,18 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:32:55 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 13:53:56 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 14:03:42 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int g_received = 0;
-
-void	sigconfirm(int signal)
+void	handle_read_receipt(int signal)
 {
-	(void)signal;
-	g_received = 1;
+	if (signal == SIGUSR1)
+		ft_printf("Received bit 1 confirmation\n");
+	else if (signal == SIGUSR2)
+		ft_printf("Received bit 0 confirmation\n");
 }
 
 void	ft_send_signal(int pid, unsigned char character)
@@ -30,34 +30,22 @@ void	ft_send_signal(int pid, unsigned char character)
 	{
 		i--;
 		temp_char = character >> i;
-		g_received = 0;
 		if (temp_char % 2 == 0)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		while (!g_received)
-			usleep(50);
+		usleep(100);
 	}
-}
-
-void	ft_send_unicode_string(int pid, const char *message)
-{
-	int	i;
-
-	i = 0;
-	while (message[i])
-	{
-		ft_send_signal(pid, (unsigned char)message[i]);
-		i++;
-	}
-	ft_send_signal(pid, '\0');
 }
 
 int	main(int ac, char **av)
 {
 	int			pid;
 	const char	*message;
+	int			i;
 
+	signal(SIGUSR1, handle_read_receipt);
+	signal(SIGUSR2, handle_read_receipt);
 	if (ac != 3)
 	{
 		ft_printf("Error. Try: ./client_bonus <PID> <MESSAGE>\n");
@@ -65,7 +53,9 @@ int	main(int ac, char **av)
 	}
 	pid = ft_atoi(av[1]);
 	message = av[2];
-	signal(SIGUSR1, sigconfirm);
-	ft_send_unicode_string(pid, message);
+	i = 0;
+	while (message[i])
+		ft_send_signal(pid, message[i++]);
+	ft_send_signal(pid, '\0');
 	return (0);
 }

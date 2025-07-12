@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:32:57 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 13:51:44 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 13:52:44 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	ft_handler(int signal, siginfo_t *info, void *context)
 	}
 	else
 		current_char <<= 1;
-	// **BONUS**: Confirma cada señal recibida enviando SIGUSR1 al cliente
 	kill(g_client_pid, SIGUSR1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	(void)av;
 	if (ac != 1)

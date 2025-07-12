@@ -6,13 +6,13 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:31:43 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 13:45:00 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 13:53:04 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void ft_handler(int signal)
+void	ft_handler(int signal)
 {
 	static unsigned char	current_char;
 	static int				bit_index;
@@ -21,7 +21,6 @@ void ft_handler(int signal)
 	bit_index = 0;
 	current_char |= (signal == SIGUSR1);
 	bit_index++;
-
 	if (bit_index == 8)
 	{
 		bit_index = 0;
@@ -31,7 +30,7 @@ void ft_handler(int signal)
 		current_char <<= 1;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	(void)av;
 	if (ac != 1)

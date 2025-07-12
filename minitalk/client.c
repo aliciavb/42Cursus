@@ -6,13 +6,13 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:31:40 by avinals           #+#    #+#             */
-/*   Updated: 2025/07/12 13:46:17 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/12 13:53:26 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void ft_send_signal(int pid, unsigned char character)
+void	ft_send_signal(int pid, unsigned char character)
 {
 	int				i;
 	unsigned char	temp_char;
@@ -22,7 +22,6 @@ void ft_send_signal(int pid, unsigned char character)
 	{
 		i--;
 		temp_char = character >> i;
-
 		if (temp_char % 2 == 0)
 			kill(pid, SIGUSR2);
 		else
@@ -31,7 +30,7 @@ void ft_send_signal(int pid, unsigned char character)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int			pid;
 	const char	*message;

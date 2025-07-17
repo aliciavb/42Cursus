@@ -5,7 +5,9 @@
 - **libft/**: Biblioteca personalizada con funciones estándar en C.
 - **get_next_line/**: Programa que lee un archivo línea a línea.
 - **ft_printf/**: Recreación de la función original printf.
-- WIP: **push_swap/**: algoritmo de ordenación de ints en stacks
+- **push_swap/**: algoritmo de ordenación de ints en stacks
+- **minitalk/**: comunicación entre dos programas con señales UNIX
+- WIP: **so_long/**: minijuego en 2d
 
 ## Tecnologías utilizadas
 

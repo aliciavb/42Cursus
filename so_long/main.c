@@ -12,34 +12,40 @@
 
 #include "so_long.h"
 
-void	exit_error(const char *msg)
+void exit_error(const char *msg)
 {
-	ft_printf("%s", msg);
+	ft_printf("Error\n%s", msg);
 	exit(EXIT_FAILURE);
 }
 
-int	main(int ac, char **av)
+static int check_file_extension(const char *filename)
 {
-	char	**map;
-	int		i;
+	int len;
+
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (0);
+	if (ft_strncmp(filename + len - 4, ".ber", 4) == 0)
+		return (1);
+	return (0);
+}
+
+int main(int ac, char **av)
+{
+	char **map;
+	t_game game;
 
 	if (ac != 2)
-		exit_error("Error. Try: ./so_long <maps/example.ber>\n");
+		exit_error("Usage: ./so_long <map.ber>\n");
+	if (!check_file_extension(av[1]))
+		exit_error("Map file must have .ber extension\n");
 	map = load_map(av[1]);
 	if (!map_is_valid(map))
-		exit_error("Invalid map.\n");
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s", map[i]);
-		i++;
-	}
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
+		exit_error("Invalid map\n");
+
+	if (!init_game(&game, map))
+		exit_error("Failed to initialize game\n");
+
+	mlx_loop(game.mlx);
 	return (0);
 }

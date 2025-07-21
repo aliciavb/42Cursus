@@ -24,7 +24,7 @@ void	count_map_elements(char **map, t_counts *count)
         while (map[i][j] && map[i][j] != '\n')
         {
             if (!ft_strchr("01CEP", map[i][j]))
-                exit_error("Invalid character in map");
+                exit_error("Invalid character in map\n");
             if (map[i][j] == 'P')
                 count->player++;
             if (map[i][j] == 'E')
@@ -53,14 +53,14 @@ void	check_walls(char **map)
     while (i < width)
     {
         if (map[0][i] != '1' || map[height - 1][i] != '1')
-            exit_error("Map must be surrounded by walls");
+            exit_error("Map must be surrounded by walls\n");
         i++;
     }
     i = 0;
     while (i < height)
     {
         if (map[i][0] != '1' || map[i][width - 1] != '1')
-            exit_error("Map must be surrounded by walls");
+            exit_error("Map must be surrounded by walls\n");
         i++;
     }
 }
@@ -76,13 +76,13 @@ char	**copy_map(char **map)
         height++;
     copy = malloc(sizeof(char *) * (height + 1));
     if (!copy)
-        exit_error("Error de malloc");
+        exit_error("Error allocating memory for map copy\n");
     i = 0;
     while (i < height)
     {
         copy[i] = ft_strdup(map[i]);
         if (!copy[i])
-            exit_error("Error de malloc");
+            exit_error("Error allocating memory for map copy\n");
         i++;
     }
     copy[i] = NULL;

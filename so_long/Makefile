@@ -15,18 +15,18 @@ NAME	= so_long
 LIBFT_DIR		= ./Libft
 GNL_DIR			= ./get_next_line
 OBJ_DIR			= obj
-MLX_DIR			= ./mlx
+MLX_DIR			= ./minilibx-linux
 
 CC				= cc
 CFLAGS			= -Wall -Werror -Wextra
-INCLUDES		= -I. -I$(LIBFT_DIR)
+INCLUDES		= -I. -I$(LIBFT_DIR) -I$(MLX_DIR)
 RM				= rm -f
 
 LIBFT			= $(LIBFT_DIR)/libft.a
 MLX_LIB			= $(MLX_DIR)/libmlx.a
 GNL_SRCS		= $(GNL_DIR)/get_next_line.c \
                   $(GNL_DIR)/get_next_line_utils.c
-MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_FLAGS		= -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lbsd -lm -lXext -lX11
 
 
 SRCS	= main.c \

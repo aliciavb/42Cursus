@@ -13,19 +13,29 @@
 NAME	= so_long
 
 LIBFT_DIR		= ./Libft
-OBJ_DIR			= obj/
+GNL_DIR			= ./get_next_line
+OBJ_DIR			= obj
+MLX_DIR			= ./mlx
 
-LIBFT			= $(LIBFT_DIR)/libft.a
-
-SRC		= so_long.c
-
-OBJ		= $(OBJ_DIR)so_long.o
-
-# Compiler and flags
 CC				= cc
 CFLAGS			= -Wall -Werror -Wextra
 INCLUDES		= -I. -I$(LIBFT_DIR)
 RM				= rm -f
+
+LIBFT			= $(LIBFT_DIR)/libft.a
+MLX_LIB			= $(MLX_DIR)/libmlx.a
+GNL_SRCS		= $(GNL_DIR)/get_next_line.c \
+                  $(GNL_DIR)/get_next_line_utils.c
+MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+
+
+SRCS	= main.c \
+		map_checks.c \
+		map_init.c \
+		map_utils.c \
+		game.c
+
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o)) $(addprefix $(OBJ_DIR)/, $(notdir $(GNL_SRCS:.c=.o)))
 
 # Colors
 GREEN			= \033[0;32m
@@ -35,25 +45,34 @@ RESET			= \033[0m
 # Rules
 all:	$(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(MLX_LIB) $(OBJ)
 	@echo "$(GREEN)Linking $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created successfully!$(RESET)"
 
 $(LIBFT):
 	@echo "$(GREEN)Building libft...$(RESET)"
-	@make -s -C $(LIBFT_DIR)
+	@make bonus -s -C $(LIBFT_DIR)
 
-$(OBJ_DIR)%.o: %.c
-	@mkdir -p $(dir $@)
+$(MLX_LIB):
+	@echo "$(GREEN)Building MLX...$(RESET)"
+	@make -s -C $(MLX_DIR)
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(OBJ_DIR)/%.o: $(GNL_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
 	@$(RM) -r $(OBJ_DIR)
 	@make clean -s -C $(LIBFT_DIR)
+	@-make clean -s -C $(MLX_DIR) 2>/dev/null || true
 
 fclean: clean
 	@echo "$(RED)Cleaning executables...$(RESET)"

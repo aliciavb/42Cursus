@@ -1,0 +1,28 @@
+# ejecutable (si haces make fclean no es necesario) 
+so_long
+
+# Objetos compilados
+obj/
+*.o
+*.a
+
+# MLX compilado (se regenera con make)
+mlx/obj/
+mlx/libmlx.a
+mlx/libmlx_Linux.a
+mlx/test/mlx-test
+mlx/test/main.o
+mlx/makefile.gen
+mlx/test/makefile.gen
+
+# Archivos temporales del sistema
+*~
+*.core
+core
+.DS_Store
+
+# Archivos de debug
+*.dSYM/
+
+# Logs de compilación
+*.log

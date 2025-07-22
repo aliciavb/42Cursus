@@ -6,14 +6,6 @@ obj/
 *.o
 *.a
 
-# MLX compilado (se regenera con make)
-mlx/obj/
-mlx/libmlx.a
-mlx/libmlx_Linux.a
-mlx/test/mlx-test
-mlx/test/main.o
-mlx/makefile.gen
-mlx/test/makefile.gen
 
 # Archivos temporales del sistema
 *~

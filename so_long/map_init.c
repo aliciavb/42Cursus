@@ -6,7 +6,7 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 18:40:08 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/17 22:34:24 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/07/22 22:34:24 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ char **list_to_map(t_list *lines)
 	return (map);
 }
 
-t_list *read_map_lines(const char *filepath)
+t_list	*read_map_lines(const char *filepath)
 {
-	int fd;
-	t_list *lines;
-	t_list *new;
-	char *line;
+	int		fd;
+	t_list	*lines;
+	t_list	*new;
+	char	*line;
 
 	fd = open(filepath, O_RDONLY);
 	if (fd < 0)
@@ -77,10 +77,10 @@ t_list *read_map_lines(const char *filepath)
 	return (lines);
 }
 
-char **load_map(const char *filepath)
+char	**load_map(const char *filepath)
 {
-	t_list *lines;
-	char **map;
+	t_list	*lines;
+	char	**map;
 
 	lines = read_map_lines(filepath);
 	map = list_to_map(lines);

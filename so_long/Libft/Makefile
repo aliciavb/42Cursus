@@ -51,6 +51,7 @@ SRC = 	ft_isalpha.c \
 		ft_print_chars.c \
 		ft_print_nbrs.c \
 		ft_print_bases.c \
+		get_next_line/get_next_line.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -5,15 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/07 11:58:01 by avinals           #+#    #+#              #
-#    Updated: 2025/07/15 11:58:39 by avinals          ###   ########.fr        #
+#    Created: 2025/07/13 11:58:01 by avinals           #+#    #+#              #
+#    Updated: 2025/07/22 11:58:39 by avinals          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
 LIBFT_DIR		= ./Libft
-GNL_DIR			= ./get_next_line
 OBJ_DIR			= obj
 MLX_DIR			= ./minilibx-linux
 
@@ -24,8 +23,6 @@ RM				= rm -f
 
 LIBFT			= $(LIBFT_DIR)/libft.a
 MLX_LIB			= $(MLX_DIR)/libmlx.a
-GNL_SRCS		= $(GNL_DIR)/get_next_line.c \
-                  $(GNL_DIR)/get_next_line_utils.c
 MLX_FLAGS		= -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lbsd -lm -lXext -lX11
 
 
@@ -35,7 +32,7 @@ SRCS	= main.c \
 		map_utils.c \
 		game.c
 
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o)) $(addprefix $(OBJ_DIR)/, $(notdir $(GNL_SRCS:.c=.o)))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 # Colors
 GREEN			= \033[0;32m
@@ -59,11 +56,6 @@ $(MLX_LIB):
 	@make -s -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(OBJ_DIR)
-	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-$(OBJ_DIR)/%.o: $(GNL_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

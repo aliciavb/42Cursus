@@ -1,0 +1,19 @@
+# ejecutable 
+so_long
+
+# Objetos compilados
+obj/
+*.o
+*.a
+
+# Archivos temporales del sistema
+*~
+*.core
+core
+.DS_Store
+
+# Archivos de debug
+*.dSYM/
+
+# Logs de compilación
+*.log

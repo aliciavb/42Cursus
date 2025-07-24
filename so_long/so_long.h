@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:06:23 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 00:01:02 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 00:57:22 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define PLAYER_SPRITE "./textures/player.xpm"
 # define COLLECT_SPRITE "./textures/collectible.xpm"
 # define EXIT_SPRITE "./textures/exit.xpm"
+# define ENEMY_SPRITE "./textures/enemies.xpm"
 
 typedef struct s_counts
 {
@@ -69,6 +70,7 @@ typedef struct s_game
 	void	*img_player;
 	void	*img_collectible;
 	void	*img_exit;
+	void	*img_enemy;
 }	t_game;
 
 void	exit_error(char *message);

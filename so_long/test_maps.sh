@@ -63,6 +63,7 @@ test_map "maps/empty.ber" "invalid" "Mapa vacío"
 test_map "maps/too_small.ber" "invalid" "Mapa demasiado pequeño"
 test_map "maps/not-rectangular.ber" "invalid" "Mapa no rectangular"
 test_map "maps/multiple_exits.ber" "invalid" "Mapa con múltiples salidas"
+test_map "maps/enemy_blocked.ber" "invalid" "Mapa con enemigos bloqueando coleccionables"
 
 echo -e "${YELLOW}=== PROBANDO MAPAS VÁLIDOS ===${NC}\n"
 
@@ -75,5 +76,12 @@ test_map "maps/maze.ber" "valid" "Mapa tipo laberinto"
 test_map "maps/large_open.ber" "valid" "Mapa grande con espacios abiertos"
 test_map "maps/snake_path.ber" "valid" "Mapa con camino serpenteante"
 test_map "maps/big_map.ber" "valid" "Mapa grande existente"
+test_map "maps/one_enemy.ber" "valid" "Mapa simple con un enemigo"
+
+echo -e "${YELLOW}=== PROBANDO MAPAS CON ENEMIGOS (BONUS) ===${NC}\n"
+
+test_map "maps/with_enemies.ber" "valid" "Mapa básico con enemigos (completable)"
+test_map "maps/enemy_maze.ber" "valid" "Laberinto con enemigos (completable)"
+test_map "maps/enemy_challenge.ber" "valid" "Desafío con enemigos (completable pero difícil)"
 
 echo -e "${BLUE}=== TESTING COMPLETADO ===${NC}"

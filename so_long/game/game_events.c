@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/24 23:57:22 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 00:58:20 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ static void	handle_move(t_game *game, int new_x, int new_y)
 	{
 		game->map[new_y][new_x] = '0';
 		game->collectibles--;
+	}
+	if (game->map[new_y][new_x] == 'X')
+	{
+		ft_printf("¡Has perdido! Te tocó un enemigo.\n");
+		ft_printf("Movimientos totales: %d\n", game->moves + 1);
+		exit_game(game);
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 00:00:07 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 00:58:31 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	load_images(t_game *game)
 			COLLECT_SPRITE, &width, &height);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
 			EXIT_SPRITE, &width, &height);
+	game->img_enemy = mlx_xpm_file_to_image(game->mlx,
+			ENEMY_SPRITE, &width, &height);
 	if (!game->img_wall || !game->img_floor || !game->img_player
-		|| !game->img_collectible || !game->img_exit)
+		|| !game->img_collectible || !game->img_exit || !game->img_enemy)
 		exit_error("Error creating images\n");
 }
 
@@ -62,6 +64,8 @@ void	render_tile(t_game *game, int x, int y, char tile)
 		img = game->img_collectible;
 	else if (tile == 'E')
 		img = game->img_exit;
+	else if (tile == 'X')
+		img = game->img_enemy;
 	else
 		img = game->img_floor;
 	mlx_put_image_to_window(game->mlx,

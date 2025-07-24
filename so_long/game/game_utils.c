@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/24 18:27:58 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 00:58:35 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	cleanup_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_collectible);
 	if (game->img_exit)
 		mlx_destroy_image(game->mlx, game->img_exit);
+	if (game->img_enemy)
+		mlx_destroy_image(game->mlx, game->img_enemy);
 }
 
 void	exit_game(t_game *game)

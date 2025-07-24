@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 19:59:07 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/22 20:21:47 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/07/25 00:58:04 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	count_map_elements(char **map, t_counts *count)
 		j = 0;
 		while (map[i][j] && map[i][j] != '\n')
 		{
-			if (!ft_strchr("01CEP", map[i][j]))
+			if (!ft_strchr("01CEPX", map[i][j]))
 				exit_error("Invalid character in map\n");
 			if (map[i][j] == 'P')
 				count->player++;

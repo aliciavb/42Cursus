@@ -18,7 +18,7 @@ MLX_DIR			= ./minilibx-linux
 
 CC				= cc
 CFLAGS			= -Wall -Werror -Wextra
-INCLUDES		= -I. -I$(LIBFT_DIR) -I$(MLX_DIR)
+INCLUDES		= -I. -I$(LIBFT_DIR) -I$(MLX_DIR) -Igame -Imap
 RM				= rm -f
 
 LIBFT			= $(LIBFT_DIR)/libft.a
@@ -27,14 +27,14 @@ MLX_FLAGS		= -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lbsd -lm -lXext -lX11
 
 
 SRCS	= main.c \
-		map_checks.c \
-		map_init.c \
-		map_utils.c \
-		game.c \
-		game_init.c \
-		game_render.c \
-		game_events.c \
-		game_utils.c
+		map/map_checks.c \
+		map/map_init.c \
+		map/map_utils.c \
+		game/game.c \
+		game/game_init.c \
+		game/game_render.c \
+		game/game_events.c \
+		game/game_utils.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
@@ -60,7 +60,7 @@ $(MLX_LIB):
 	@make -s -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 

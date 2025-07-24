@@ -1,11 +1,10 @@
-# ejecutable (si haces make fclean no es necesario) 
+# ejecutable 
 so_long
 
 # Objetos compilados
 obj/
 *.o
 *.a
-
 
 # Archivos temporales del sistema
 *~

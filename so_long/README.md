@@ -2,6 +2,7 @@
 1. MAIN.C - Punto de entrada
 Mi programa empieza en el main (como todos), que se encuentra en main.c, en la función recibimos el número de argumentos y los argumentos en sí. Declaramos la variable map que es un char ** (una matriz) en la que vamos a guardar el mapa y una estructura t_game llamada game, que contiene:
 
+```
 typedef struct s_game
 {
     void    *mlx;              // Conexión con MLX
@@ -20,6 +21,7 @@ typedef struct s_game
     void    *img_collectible;  // Imagen del coleccionable (XPM)
     void    *img_exit;         // Imagen de la salida (XPM)
 } t_game;
+```
 
 Lo primero que comprobamos es si hay dos argumentos, que serían el programa so_long y la ruta del mapa. Si hay un error llamamos a exit_error que está en el propio main.c y lo que hace es imprimir "Error\n" seguido del mensaje específico y terminar el programa con exit(EXIT_FAILURE).
 
@@ -90,9 +92,11 @@ Destruye la conexión MLX.
 Libera la memoria del mapa.
 
 🔄 RESUMEN DEL FLUJO:
+```
 MAIN → Validar argumentos → Cargar mapa → Validar mapa → 
 Inicializar juego → Cargar sprites → Renderizar → 
 LOOP (Esperar eventos → Mover jugador → Renderizar → Verificar victoria) → 
 Limpiar y salir
+```
 
 Maneja entrada, lógica, renderizado y memoria de forma ordenada y segura 🎮✨

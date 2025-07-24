@@ -12,10 +12,10 @@
 
 #include "so_long.h"
 
-static void	find_player(char **map, int *x, int *y)
+static void find_player(char **map, int *x, int *y)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	while (map[i])
@@ -27,7 +27,7 @@ static void	find_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return ;
+				return;
 			}
 			j++;
 		}
@@ -35,56 +35,52 @@ static void	find_player(char **map, int *x, int *y)
 	}
 }
 
-static void	flood_fill_rec(char **map, int x, int y, int *c, int *e)
+static void flood_fill_rec(char **map, t_flood_data *data, int x, int y)
 {
-	int	width;
-	int	height;
-
-	height = 0;
-	while (map[height])
-		height++;
-	width = ft_strlen(map[0]);
-	if (map[0][width - 1] == '\n')
-		width--;
-	if (x < 0 || y < 0 || x >= width || y >= height)
-		return ;
+	if (x < 0 || y < 0 || x >= data->width || y >= data->height)
+		return;
 	if (map[y][x] == '1' || map[y][x] == 'F')
-		return ;
+		return;
 	if (map[y][x] == 'C')
-		(*c)++;
+		data->found_c++;
 	if (map[y][x] == 'E')
-		(*e)++;
+		data->found_e++;
 	map[y][x] = 'F';
-	flood_fill_rec(map, x - 1, y, c, e);
-	flood_fill_rec(map, x + 1, y, c, e);
-	flood_fill_rec(map, x, y - 1, c, e);
-	flood_fill_rec(map, x, y + 1, c, e);
+	flood_fill_rec(map, data, x - 1, y);
+	flood_fill_rec(map, data, x + 1, y);
+	flood_fill_rec(map, data, x, y - 1);
+	flood_fill_rec(map, data, x, y + 1);
 }
 
-static int	flood_fill_check(char **map, int total_collectibles)
+static int flood_fill_check(char **map, int total_collectibles)
 {
-	char	**map_copy;
-	int		player_x;
-	int		player_y;
-	int		found_c;
-	int		found_e;
+	char **map_copy;
+	int player_x;
+	int player_y;
+	t_flood_data data;
 
 	map_copy = copy_map(map);
-	found_c = 0;
-	found_e = 0;
+	data.found_c = 0;
+	data.found_e = 0;
+	data.height = 0;
+	while (map[data.height])
+		data.height++;
+	data.width = ft_strlen(map[0]);
+	if (map[0][data.width - 1] == '\n')
+		data.width--;
 	find_player(map_copy, &player_x, &player_y);
-	flood_fill_rec(map_copy, player_x, player_y, &found_c, &found_e);
+	flood_fill_rec(map_copy, &data, player_x, player_y);
 	free_map_copy(map_copy);
-	if (found_c != total_collectibles)
+	if (data.found_c != total_collectibles)
 		exit_error("Not all collectibles are reachable\n");
-	if (found_e == 0)
+	if (data.found_e == 0)
 		exit_error("Exit is not reachable\n");
 	return (1);
 }
 
-int	map_is_valid(char **map)
+int map_is_valid(char **map)
 {
-	t_counts	count;
+	t_counts count;
 
 	count.player = 0;
 	count.exit = 0;
@@ -92,8 +88,8 @@ int	map_is_valid(char **map)
 	count_map_elements(map, &count);
 	if (count.player != 1)
 		exit_error("It must be exactly one Player\n");
-	if (count.exit < 1)
-		exit_error("It must be at least one Exit\n");
+	if (count.exit != 1)
+		exit_error("It must be exactly one Exit\n");
 	if (count.collect < 1)
 		exit_error("It must be at least one Collectible\n");
 	check_walls(map);

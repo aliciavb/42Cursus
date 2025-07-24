@@ -30,7 +30,11 @@ SRCS	= main.c \
 		map_checks.c \
 		map_init.c \
 		map_utils.c \
-		game.c
+		game.c \
+		game_init.c \
+		game_render.c \
+		game_events.c \
+		game_utils.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

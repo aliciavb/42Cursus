@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	exit_error(const char *msg)
+void	exit_error(char *msg)
 {
 	ft_printf("Error\n%s", msg);
 	exit(EXIT_FAILURE);
@@ -42,8 +42,7 @@ int	main(int ac, char **av)
 	map = load_map(av[1]);
 	if (!map_is_valid(map))
 		exit_error("Invalid map\n");
-	if (!init_game(&game, map))
-		exit_error("Failed to initialize game\n");
-	mlx_loop(game.mlx);
+	init_game(&game, map);
+	run_game(&game);
 	return (0);
 }

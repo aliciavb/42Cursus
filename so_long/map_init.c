@@ -12,9 +12,9 @@
 
 #include "so_long.h"
 
-static int validate_and_get_width(char *line, int expected)
+static int	validate_and_get_width(char *line, int expected)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(line);
 	if (line[len - 1] == '\n')
@@ -26,13 +26,13 @@ static int validate_and_get_width(char *line, int expected)
 	return (expected);
 }
 
-char **list_to_map(t_list *lines)
+char	**list_to_map(t_list *lines)
 {
-	int height;
-	int width;
-	char **map;
-	int i;
-	t_list *tmp;
+	int		height;
+	int		width;
+	char	**map;
+	int		i;
+	t_list	*tmp;
 
 	height = ft_lstsize(lines);
 	map = malloc(sizeof(char *) * (height + 1));

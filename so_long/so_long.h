@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:06:23 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/24 22:31:50 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/07/25 00:01:02 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	check_walls(char **map);
 char	**copy_map(char **map);
 void	free_map_copy(char **map);
 void	run_game(t_game *game);
+int		expose_hook(t_game *game);
 void	init_game(t_game *game, char **map);
 void	*create_colored_image(t_game *game, int color);
 void	load_images(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/24 21:06:54 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 00:00:20 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void	init_game(t_game *game, char **map)
 	load_images(game);
 	mlx_key_hook(game->window, handle_keypress, game);
 	mlx_hook(game->window, 17, 0, close_window, game);
+	mlx_expose_hook(game->window, expose_hook, game);
 	render_map(game);
 }

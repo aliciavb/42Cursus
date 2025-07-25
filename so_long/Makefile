@@ -36,7 +36,8 @@ SRCS	= main.c \
 		game/game_images.c \
 		game/game_events.c \
 		game/game_utils.c \
-		game/game_animations.c
+		game/game_animations.c \
+		game/game_ui.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

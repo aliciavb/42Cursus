@@ -6,25 +6,26 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 14:51:41 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 17:06:45 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*create_colored_image(t_game *game, int color)
+void	*create_colored_image_size(t_game *game, int color,
+	int width, int height)
 {
 	void	*img;
 	char	*data;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int		specs[4];
 
-	img = mlx_new_image(game->mlx, TILE_SIZE, TILE_SIZE);
+	img = mlx_new_image(game->mlx, width, height);
 	if (!img)
 		return (NULL);
-	data = mlx_get_data_addr(img, &bits_per_pixel, &line_length, &endian);
-	fill_image_with_color(data, color, bits_per_pixel, line_length);
+	data = mlx_get_data_addr(img, &specs[0], &specs[1], &specs[3]);
+	specs[2] = width;
+	specs[3] = height;
+	fill_img_rect(data, color, specs);
 	return (img);
 }
 

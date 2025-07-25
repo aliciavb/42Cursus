@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 14:41:28 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 17:06:27 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	cleanup_images(t_game *game)
 	if (game->img_enemy)
 		mlx_destroy_image(game->mlx, game->img_enemy);
 	cleanup_animation_frames(game);
+	cleanup_ui(game);
 }
 
 void	exit_game(t_game *game)
@@ -78,6 +79,26 @@ void	fill_image_with_color(char *data, int color, int bpp, int line_len)
 		while (j < TILE_SIZE)
 		{
 			pixel_index = (i * line_len) + (j * (bpp / 8));
+			*(unsigned int *)(data + pixel_index) = color;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	fill_img_rect(char *data, int color, int specs[4])
+{
+	int	i;
+	int	j;
+	int	pixel_index;
+
+	i = 0;
+	while (i < specs[3])
+	{
+		j = 0;
+		while (j < specs[2])
+		{
+			pixel_index = (i * specs[1]) + (j * (specs[0] / 8));
 			*(unsigned int *)(data + pixel_index) = color;
 			j++;
 		}

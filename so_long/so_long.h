@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:06:23 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 14:40:16 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 17:07:07 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <fcntl.h>
 
 # define TILE_SIZE 64
+# define UI_HEIGHT 30
+# define UI_COLOR 0x000000
+# define TEXT_COLOR 0xFFFFFF
 
 # define KEY_W 119
 # define KEY_A 97
@@ -85,6 +88,10 @@ typedef struct s_game
 	int		animation_frame;
 	int		animation_counter;
 	int		player_direction;
+	void	*ui_background;
+	int		total_collectibles;
+	int		window_width;
+	int		window_height;
 }	t_game;
 
 void	exit_error(char *message);
@@ -110,10 +117,19 @@ int		handle_keypress(int key, t_game *game);
 void	exit_game(t_game *game);
 void	cleanup_game(t_game *game);
 void	cleanup_images(t_game *game);
+void	*create_colored_image(t_game *game, int color);
+void	fill_image_with_color(char *data, int color, int bpp, int line_len);
 void	init_animation_system(t_game *game);
 void	update_enemy_animation(t_game *game);
 int		has_enemies_on_map(t_game *game);
 int		animation_loop(t_game *game);
 void	cleanup_animation_frames(t_game *game);
+void	create_ui_background(t_game *game);
+void	render_ui_text(t_game *game);
+void	render_ui(t_game *game);
+void	cleanup_ui(t_game *game);
+void	*create_colored_image_size(t_game *game, int color,
+			int width, int height);
+void	fill_img_rect(char *data, int color, int specs[4]);
 
 #endif

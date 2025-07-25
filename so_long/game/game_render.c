@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 14:54:43 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 16:59:04 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	render_tile(t_game *game, int x, int y, char tile)
 		img = game->img_enemy_frames[game->animation_frame];
 	else
 		img = game->img_floor;
-	mlx_put_image_to_window(game->mlx,
-		game->window, img, x * TILE_SIZE, y * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->window,
+		img, x * TILE_SIZE, (y * TILE_SIZE) + UI_HEIGHT);
 }
 
 static void	render_single_tile(t_game *game, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->window,
-		game->img_floor, x * TILE_SIZE, y * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->window, game->img_floor,
+		x * TILE_SIZE, (y * TILE_SIZE) + UI_HEIGHT);
 	if (x == game->player_x && y == game->player_y)
 		render_tile(game, x, y, 'P');
 	else
@@ -57,6 +57,7 @@ void	render_map(t_game *game)
 	int	x;
 	int	y;
 
+	render_ui(game);
 	y = 0;
 	while (y < game->height)
 	{

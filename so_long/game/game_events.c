@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 14:52:53 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 16:57:40 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,18 @@ static void	handle_move(t_game *game, int new_x, int new_y)
 	}
 	if (game->map[new_y][new_x] == 'X')
 	{
-		ft_printf("¡Has perdido! Te tocó un enemigo.\n");
-		ft_printf("Movimientos totales: %d\n", game->moves + 1);
+		ft_printf("You lost! Touched an enemy.\n");
+		ft_printf("Total moves: %d\n", game->moves + 1);
 		exit_game(game);
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
 	{
-		ft_printf("¡Has ganado! Movimientos: %d\n", game->moves + 1);
+		ft_printf("You won! Moves: %d\n", game->moves + 1);
 		exit_game(game);
 	}
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;
-	ft_printf("Movimientos: %d | Plantas restantes: %d\n",
-		game->moves, game->collectibles);
 }
 
 void	move_player(t_game *game, int dx, int dy)

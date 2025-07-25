@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	if (ac != 2)
-		exit_error("Try: ./so_long <maps/example.ber>\n");
+		exit_error("Usage: ./so_long <map.ber>\n");
 	if (!check_file_extension(av[1]))
 		exit_error("Map file must have .ber extension\n");
 	map = load_map(av[1]);

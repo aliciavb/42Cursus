@@ -6,19 +6,19 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 01:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 15:05:43 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 16:53:21 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void init_animation_system(t_game *game)
+void	init_animation_system(t_game *game)
 {
 	game->animation_frame = 0;
 	game->animation_counter = 0;
 }
 
-void update_enemy_animation(t_game *game)
+void	update_enemy_animation(t_game *game)
 {
 	game->animation_counter++;
 	if (game->animation_counter >= 2400)
@@ -29,10 +29,10 @@ void update_enemy_animation(t_game *game)
 	}
 }
 
-int has_enemies_on_map(t_game *game)
+int	has_enemies_on_map(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < game->height)
@@ -49,16 +49,16 @@ int has_enemies_on_map(t_game *game)
 	return (0);
 }
 
-int animation_loop(t_game *game)
+int	animation_loop(t_game *game)
 {
 	if (has_enemies_on_map(game))
 		update_enemy_animation(game);
 	return (0);
 }
 
-void cleanup_animation_frames(t_game *game)
+void	cleanup_animation_frames(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)

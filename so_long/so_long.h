@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:06:23 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 00:57:22 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 14:40:16 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define KEY_D 100
 # define ESC 65307
 # define KEY_UP 65362
+
+# define DIRECTION_RIGHT 1
+# define DIRECTION_LEFT 0
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
@@ -35,9 +38,14 @@
 # define WALL_SPRITE "./textures/wall.xpm"
 # define FLOOR_SPRITE "./textures/floor.xpm"
 # define PLAYER_SPRITE "./textures/player.xpm"
+# define PLAYER_RIGHT "./textures/player_right.xpm"
+# define PLAYER_LEFT "./textures/player_left.xpm"
 # define COLLECT_SPRITE "./textures/collectible.xpm"
 # define EXIT_SPRITE "./textures/exit.xpm"
 # define ENEMY_SPRITE "./textures/enemies.xpm"
+# define ENEMY_FRAME1 "./textures/enemies_1.xpm"
+# define ENEMY_FRAME2 "./textures/enemies_2.xpm"
+# define ENEMY_FRAME3 "./textures/enemies_3.xpm"
 
 typedef struct s_counts
 {
@@ -68,9 +76,15 @@ typedef struct s_game
 	void	*img_wall;
 	void	*img_floor;
 	void	*img_player;
+	void	*img_player_right;
+	void	*img_player_left;
 	void	*img_collectible;
 	void	*img_exit;
 	void	*img_enemy;
+	void	*img_enemy_frames[3];
+	int		animation_frame;
+	int		animation_counter;
+	int		player_direction;
 }	t_game;
 
 void	exit_error(char *message);
@@ -96,5 +110,10 @@ int		handle_keypress(int key, t_game *game);
 void	exit_game(t_game *game);
 void	cleanup_game(t_game *game);
 void	cleanup_images(t_game *game);
+void	init_animation_system(t_game *game);
+void	update_enemy_animation(t_game *game);
+int		has_enemies_on_map(t_game *game);
+int		animation_loop(t_game *game);
+void	cleanup_animation_frames(t_game *game);
 
 #endif

@@ -12,10 +12,10 @@
 
 #include "so_long.h"
 
-static void find_player(char **map, int *x, int *y)
+static void	find_player(char **map, int *x, int *y)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -27,7 +27,7 @@ static void find_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return;
+				return ;
 			}
 			j++;
 		}
@@ -35,12 +35,12 @@ static void find_player(char **map, int *x, int *y)
 	}
 }
 
-static void flood_fill_rec(char **map, t_flood_data *data, int x, int y)
+static void	flood_fill_rec(char **map, t_flood_data *data, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= data->width || y >= data->height)
-		return;
+		return ;
 	if (map[y][x] == '1' || map[y][x] == 'F' || map[y][x] == 'X')
-		return;
+		return ;
 	if (map[y][x] == 'C')
 		data->found_c++;
 	if (map[y][x] == 'E')
@@ -52,12 +52,12 @@ static void flood_fill_rec(char **map, t_flood_data *data, int x, int y)
 	flood_fill_rec(map, data, x, y + 1);
 }
 
-static int flood_fill_check(char **map, int total_collectibles)
+static int	flood_fill_check(char **map, int total_collectibles)
 {
-	char **map_copy;
-	int player_x;
-	int player_y;
-	t_flood_data data;
+	char			**map_copy;
+	int				player_x;
+	int				player_y;
+	t_flood_data	data;
 
 	map_copy = copy_map(map);
 	data.found_c = 0;
@@ -78,9 +78,9 @@ static int flood_fill_check(char **map, int total_collectibles)
 	return (1);
 }
 
-int map_is_valid(char **map)
+int	map_is_valid(char **map)
 {
-	t_counts count;
+	t_counts	count;
 
 	count.player = 0;
 	count.exit = 0;

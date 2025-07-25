@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:00:00 by avinals-          #+#    #+#             */
-/*   Updated: 2025/07/25 00:58:20 by avinals          ###   ########.fr       */
+/*   Updated: 2025/07/25 14:52:53 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	close_window(t_game *game)
 
 static int	check_move_validity(t_game *game, int new_x, int new_y)
 {
-	if (new_x < 0 || new_x >= game->width || new_y < 0 || new_y >= game->height)
+	if (new_x < 0 || new_x >= game->width || new_y < 0
+		|| new_y >= game->height)
 		return (0);
 	if (game->map[new_y][new_x] == '1')
 		return (0);
@@ -61,6 +62,10 @@ void	move_player(t_game *game, int dx, int dy)
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
+	if (dx > 0)
+		game->player_direction = DIRECTION_RIGHT;
+	else if (dx < 0)
+		game->player_direction = DIRECTION_LEFT;
 	if (check_move_validity(game, new_x, new_y))
 		handle_move(game, new_x, new_y);
 }

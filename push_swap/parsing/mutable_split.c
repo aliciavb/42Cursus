@@ -60,6 +60,16 @@ static char	*get_next_word(char **s, char c)
 	return (word);
 }
 
+static void	free_partial(char **array, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+		free(array[i++]);
+	free(array);
+}
+
 char	**split(char *s, char c)
 {
 	int		words_count;
@@ -67,21 +77,20 @@ char	**split(char *s, char c)
 	int		i;
 
 	words_count = count_words(s, c);
-	if (!words_count)
-		exit(1);
-	result_array = malloc(sizeof(char *) * (words_count + 2));
+	if (words_count == 0)
+		return (NULL);
+	result_array = malloc(sizeof(char *) * (words_count + 1));
 	if (!result_array)
 		return (NULL);
-	result_array[0] = malloc(1);
-	if (!result_array[0])
-		return (NULL);
-	result_array[0][0] = '\0';
-	i = 1;
-	while (i <= words_count)
+	i = 0;
+	while (i < words_count)
 	{
 		result_array[i] = get_next_word(&s, c);
 		if (!result_array[i])
+		{
+			free_partial(result_array, i);
 			return (NULL);
+		}
 		i++;
 	}
 	result_array[i] = NULL;

@@ -30,29 +30,29 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 }	t_stack_node;
 
-//error.c
+//error/error.c
 int				error_syntax(char *str);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
 
-//stack_init.c
+//stack/stack_init.c
 void			init_stack_a(t_stack_node **a, char **av);
 t_stack_node	*get_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
-//mutable_split.c
+//parser/mutable_split.c
 char			**split(char *s, char c);
 
-//init_a_to_b
+//algorithms/init_a_to_b
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
 void			current_index(t_stack_node *stack);
 void			set_cheapest(t_stack_node *stack);
 
-//init_b_to_a
+//algorithms/init_b_to_a
 void			init_nodes_b(t_stack_node *a, t_stack_node *b);
 
-//stack_utils.c
+//stack/stack_utils.c
 int				stack_len(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 bool			stack_sorted(t_stack_node *stack);
@@ -78,13 +78,13 @@ void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 void			pa(t_stack_node **a, t_stack_node **b, bool print);
 void			pb(t_stack_node **b, t_stack_node **a, bool print);
 
-//sort_three.c
+//algorithms/sort_three.c
 void			sort_three(t_stack_node **a);
 
-//sort_stack.c
+//algorithm/sort_stack.c
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 
-//stack_moves.c
+//algorithm/stack_moves.c
 void			rotate_both(t_stack_node **a, t_stack_node **b,
 					t_stack_node *cheapest_node);
 void			rev_rotate_both(t_stack_node **a, t_stack_node **b,

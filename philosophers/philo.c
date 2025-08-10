@@ -6,13 +6,55 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:37:42 by avinals           #+#    #+#             */
-/*   Updated: 2025/08/10 14:37:45 by avinals          ###   ########.fr       */
+/*   Updated: 2025/08/10 14:52:19 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "philo.h"
 
 int main(int ac, char **av)
 {
-
+	if (ac < 5 || ac > 6)
+	{
+		printf("Error: Incorrect number of arguments.\n");
+		printf("Try: ./philo number_of_philosophers time_to_die time_to_eat "
+			   "time_to_sleep [times_must_eat]\n");
+		return (1);
+	}
+	int	i;
+	int	philo_num;
+	
+	i = 1;
+	while (i < ac)
+	{
+		int j = 0;
+		while (av[i][j])
+		{
+			if (!is_digit(av[i][j]))
+			{
+				printf("Error: Argument '%s' is not a valid number.\n", av[i]);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	philo_num = ft_atoi(av[1]);
+	if (philo_num < 1 || philo_num > 200)
+	{
+		printf("Error: philo_num must be between 1 and 200.\n");
+		return (1);
+	}
+	i = 2;
+	while (i < 5)
+	{
+		int time = ft_atoi(av[i]);
+		if (time <= 0)
+		{
+			printf("Error: Argument '%s' must be greater than 0.\n", av[i]);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }

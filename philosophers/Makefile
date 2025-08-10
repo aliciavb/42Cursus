@@ -6,7 +6,7 @@
 #    By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/10 14:36:20 by avinals           #+#    #+#              #
-#    Updated: 2025/08/10 14:37:32 by avinals          ###   ########.fr        #
+#    Updated: 2025/08/10 14:53:07 by avinals          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME 			= philo
 
 OBJ_DIR			= obj/
 
-SRCS			= philo.c
+SRCS			= philo.c \
+				philo_utils.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)%.o)
 

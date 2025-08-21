@@ -6,24 +6,26 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:37:05 by avinals-          #+#    #+#             */
-/*   Updated: 2025/08/21 13:29:24 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:35:54 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int is_digit(char c)
+int	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int result = 0;
-	int sign = 1;
+	int	result;
+	int	sign;
 
-	while (*str && (*str == ' ' || *str == '\t' || *str == '\n' ||
-					*str == '\r' || *str == '\v' || *str == '\f'))
+	result = 0;
+	sign = 1;
+	while (*str && (*str == ' ' || *str == '\t' || *str == '\n'
+			||*str == '\r' || *str == '\v' || *str == '\f'))
 		str++;
 	if (*str == '-' || *str == '+')
 	{

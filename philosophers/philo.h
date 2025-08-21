@@ -6,18 +6,18 @@
 /*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:36:12 by avinals           #+#    #+#             */
-/*   Updated: 2025/08/21 13:29:45 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:50:18 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/time.h>
+# include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
 
 typedef struct s_data	t_data;
 
@@ -49,13 +49,15 @@ typedef struct s_data
 	t_philo			*philosophers;
 }	t_data;
 
-int is_digit(char c);
-int ft_atoi(const char *str);
+int		is_digit(char c);
+int		ft_atoi(const char *str);
 
-// Main functions
-int	init_data(t_data *data, char **av);
-int	init_philosophers(t_data *data);
-int	start_simulation(t_data *data);
+// Data initialization functions
+int		init_data(t_data *data, char **av);
+int		init_philosophers(t_data *data);
+int		setup_philosophers_and_forks(t_data *data);
+int		setup_philosophers_data(t_data *data);
+int		start_simulation(t_data *data);
 void	cleanup_all(t_data *data);
 
 // Utility functions
@@ -68,5 +70,10 @@ void	*philosopher_routine(void *arg);
 void	*monitor_routine(void *arg);
 int		check_death(t_data *data);
 int		all_philosophers_ate(t_data *data);
+
+// Action functions
+void	take_forks(t_philo *philo);
+void	eat(t_philo *philo);
+void	sleep_and_think(t_philo *philo);
 
 #endif

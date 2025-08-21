@@ -6,7 +6,7 @@
 #    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/10 14:36:20 by avinals-          #+#    #+#              #
-#    Updated: 2025/08/21 13:28:59 by avinals-         ###   ########.fr        #
+#    Updated: 2025/08/21 13:50:18 by avinals-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,12 @@ OBJ_DIR			= obj/
 
 SRCS			= philo.c \
 				philo_utils.c \
-				philo_init.c \
-				philo_simulation.c
+				philo_data.c \
+				philo_threads.c \
+				philo_cleanup.c \
+				philo_simulation.c \
+				philo_actions.c \
+				philo_monitor.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)%.o)
 

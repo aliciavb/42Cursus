@@ -3,31 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:37:42 by avinals           #+#    #+#             */
-/*   Updated: 2025/08/10 14:52:19 by avinals          ###   ########.fr       */
+/*   Created: 2025/08/10 14:37:23 by avinals-          #+#    #+#             */
+/*   Updated: 2025/08/21 13:29:30 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "philo.h"
 
-int main(int ac, char **av)
+static int	validate_arguments(int ac, char **av)
 {
-	if (ac < 5 || ac > 6)
-	{
-		printf("Error: Incorrect number of arguments.\n");
-		printf("Try: ./philo number_of_philosophers time_to_die time_to_eat "
-			   "time_to_sleep [times_must_eat]\n");
-		return (1);
-	}
 	int	i;
+	int	j;
 	int	philo_num;
-	
+
 	i = 1;
 	while (i < ac)
 	{
-		int j = 0;
+		j = 0;
 		while (av[i][j])
 		{
 			if (!is_digit(av[i][j]))
@@ -56,5 +51,34 @@ int main(int ac, char **av)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int main(int ac, char **av)
+{
+	t_data	data;
+
+	if (ac < 5 || ac > 6)
+	{
+		printf("Error: Incorrect number of arguments.\n");
+		printf("Try: ./philo number_of_philosophers time_to_die time_to_eat "
+			   "time_to_sleep [times_must_eat]\n");
+		return (1);
+	}
+	if (validate_arguments(ac, av))
+		return (1);
+	if (init_data(&data, av))
+		return (1);
+	if (init_philosophers(&data))
+	{
+		cleanup_all(&data);
+		return (1);
+	}
+	if (start_simulation(&data))
+	{
+		cleanup_all(&data);
+		return (1);
+	}
+	cleanup_all(&data);
 	return (0);
 }

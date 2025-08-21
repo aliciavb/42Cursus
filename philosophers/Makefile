@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+         #
+#    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/10 14:36:20 by avinals           #+#    #+#              #
-#    Updated: 2025/08/10 14:53:07 by avinals          ###   ########.fr        #
+#    Created: 2025/08/10 14:36:20 by avinals-          #+#    #+#              #
+#    Updated: 2025/08/21 13:28:59 by avinals-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,14 @@ NAME 			= philo
 OBJ_DIR			= obj/
 
 SRCS			= philo.c \
-				philo_utils.c
+				philo_utils.c \
+				philo_init.c \
+				philo_simulation.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)%.o)
 
 CC				= cc
-CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Werror -Wextra -pthread
 RM				= rm -f
 
 # Colors for output

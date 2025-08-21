@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:47:35 by avinals           #+#    #+#             */
-/*   Updated: 2025/08/10 14:48:50 by avinals          ###   ########.fr       */
+/*   Created: 2025/08/10 14:37:05 by avinals-          #+#    #+#             */
+/*   Updated: 2025/08/21 13:29:24 by avinals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,36 @@ int ft_atoi(const char *str)
 		str++;
 	}
 	return (result * sign);
+}
+
+long	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+void	ft_usleep(long time)
+{
+	long	start;
+
+	start = get_time();
+	while (get_time() - start < time)
+		usleep(100);
+}
+
+void	print_status(t_philo *philo, char *status)
+{
+	long	timestamp;
+
+	pthread_mutex_lock(&philo->data->write_mutex);
+	pthread_mutex_lock(&philo->data->death_mutex);
+	if (philo->data->simulation_running)
+	{
+		timestamp = get_time() - philo->data->start_time;
+		printf("%ld %d %s\n", timestamp, philo->id, status);
+	}
+	pthread_mutex_unlock(&philo->data->death_mutex);
+	pthread_mutex_unlock(&philo->data->write_mutex);
 }

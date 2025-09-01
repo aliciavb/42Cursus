@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+         #
+#    By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/10 14:36:20 by avinals-          #+#    #+#              #
-#    Updated: 2025/08/21 13:50:18 by avinals-         ###   ########.fr        #
+#    Updated: 2025/09/01 17:20:58 by avinals          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ NAME 			= philo
 OBJ_DIR			= obj/
 
 SRCS			= philo.c \
-				philo_utils.c \
-				philo_data.c \
-				philo_threads.c \
-				philo_cleanup.c \
-				philo_simulation.c \
-				philo_actions.c \
-				philo_monitor.c
+			   philo_utils.c \
+			   philo_data.c \
+			   philo_threads.c \
+			   philo_cleanup.c \
+			   philo_simulation.c \
+			   philo_actions.c \
+			   philo_monitor.c \
+			   philo_args.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)%.o)
 

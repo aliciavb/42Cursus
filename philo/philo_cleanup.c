@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_cleanup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avinals- <avinals-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 13:41:31 by avinals-          #+#    #+#             */
-/*   Updated: 2025/08/21 13:51:02 by avinals-         ###   ########.fr       */
+/*   Updated: 2025/09/01 17:50:09 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	cleanup_philosophers(t_data *data)
 			i++;
 		}
 		free(data->philosophers);
+		data->philosophers = NULL;
 	}
 }
 
@@ -41,15 +42,21 @@ static void	cleanup_forks(t_data *data)
 			i++;
 		}
 		free(data->forks_mutex);
+		data->forks_mutex = NULL;
 	}
 }
 
 void	cleanup_all(t_data *data)
 {
-	cleanup_philosophers(data);
+	if (data->philosophers)
+		cleanup_philosophers(data);
 	if (data->philosophers_threads)
+	{
 		free(data->philosophers_threads);
-	cleanup_forks(data);
+		data->philosophers_threads = NULL;
+	}
+	if (data->forks_mutex)
+		cleanup_forks(data);
 	pthread_mutex_destroy(&data->write_mutex);
 	pthread_mutex_destroy(&data->death_mutex);
 }

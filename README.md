@@ -7,7 +7,8 @@
 - **ft_printf/**: Recreación de la función original printf.
 - **push_swap/**: algoritmo de ordenación de ints en stacks
 - **minitalk/**: comunicación entre dos programas con señales UNIX
-- WIP: **so_long/**: minijuego en 2d
+- **so_long/**: minijuego en 2d con sprites y funciones de gráficos
+- WIP: **philo/**: el problema de los filósofos. Threads y mutex
 
 ## Tecnologías utilizadas
 
@@ -25,3 +26,4 @@ Puedes escribirme a través de mi [mail](mailto:avinals-@student.42madrid.com) o
 
 ---
 ¡Gracias por pasarte por mi repo! 😊
+

@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 13:41:31 by avinals-          #+#    #+#             */
-/*   Updated: 2025/09/02 14:53:20 by avinals          ###   ########.fr       */
+/*   Updated: 2025/09/02 15:00:32 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ void	cleanup_all(t_data *data)
 }
 
 /*************para debug, comentar***********/
-void	print_final_stats(t_data *data)
+/* void	print_final_stats(t_data *data)
 {
-    int	i;
+	int	i;
 
-    printf("\n=== FINAL STATS ===\n");
-    i = 0;
-    while (i < data->num_philosophers)
-    {
-        printf("Philo %d ate %d times\n", 
-            data->philosophers[i].id, 
-            data->philosophers[i].meals_eaten);
-        i++;
-    }
-}
+	printf("\n=== FINAL STATS ===\n");
+	i = 0;
+	while (i < data->num_philosophers)
+	{
+		printf("Philo %d ate %d times\n",
+			data->philosophers[i].id,
+			data->philosophers[i].meals_eaten);
+		i++;
+	}
+} */
 /*******************************************/

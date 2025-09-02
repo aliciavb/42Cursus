@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:36:12 by avinals           #+#    #+#             */
-/*   Updated: 2025/09/02 14:55:39 by avinals          ###   ########.fr       */
+/*   Updated: 2025/09/02 15:00:44 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,8 @@ void	init_data_values(t_data *data, char **av);
 int		init_data_resources(t_data *data);
 void	destroy_data_resources(t_data *data);
 
-
 /****************para debug, comentar*********************/
-void	print_final_stats(t_data *data);
+/* void	print_final_stats(t_data *data); */
 /*********************************************************/
 
 #endif

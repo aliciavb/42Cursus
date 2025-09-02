@@ -6,7 +6,7 @@
 /*   By: avinals <avinals-@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:37:42 by avinals-          #+#    #+#             */
-/*   Updated: 2025/09/01 18:10:45 by avinals          ###   ########.fr       */
+/*   Updated: 2025/09/02 14:54:23 by avinals          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	philo_run(char **av)
 		cleanup_all(&data);
 		return (1);
 	}
+	print_final_stats(&data); /**********para debug, comentar**********/
 	cleanup_all(&data);
 	return (0);
 }

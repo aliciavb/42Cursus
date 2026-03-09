@@ -1,0 +1,6 @@
+*.log
+Account.hpp
+*.pdf
+tests.cpp
+
+*.o

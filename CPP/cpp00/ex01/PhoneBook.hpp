@@ -17,6 +17,7 @@ public:
 	PhoneBook();
 	void addContact();
 	void searchContacts();
+	
 };
 
 #endif

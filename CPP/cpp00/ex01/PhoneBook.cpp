@@ -125,3 +125,19 @@ void PhoneBook::searchContacts()
 	std::cout << "Phone number: " << this->contacts[idx].getPhoneNumber() << std::endl;
 	std::cout << "Darkest secret: " << this->contacts[idx].getDarkestSecret() << std::endl;
 }
+#include "PhoneBook.hpp"
+
+void PhoneBook::add(void)
+{
+
+}
+
+void PhoneBook::search(void)
+{
+	
+}
+
+void PhoneBook::exit(void)
+{
+	
+}

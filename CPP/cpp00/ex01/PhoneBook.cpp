@@ -3,7 +3,7 @@
 
 PhoneBook::PhoneBook()
 {
-	this->count = 0;
+	count = 0;
 }
 
 std::string PhoneBook::formatField(std::string str)
@@ -18,7 +18,7 @@ void PhoneBook::addContact()
 	std::string input;
 	int index;
 
-	index = this->count % 8;
+	index = count % 8;
 
 	std::cout << "First name: ";
 	std::getline(std::cin, input);
@@ -27,7 +27,7 @@ void PhoneBook::addContact()
 		std::cout << "Error: field can't be empty" << std::endl;
 		return;
 	}
-	this->contacts[index].setFirstName(input);
+	contacts[index].setFirstName(input);
 
 	std::cout << "Last name: ";
 	std::getline(std::cin, input);
@@ -36,7 +36,7 @@ void PhoneBook::addContact()
 		std::cout << "Error: field can't be empty" << std::endl;
 		return;
 	}
-	this->contacts[index].setLastName(input);
+	contacts[index].setLastName(input);
 
 	std::cout << "Nickname: ";
 	std::getline(std::cin, input);
@@ -45,7 +45,7 @@ void PhoneBook::addContact()
 		std::cout << "Error: field can't be empty" << std::endl;
 		return;
 	}
-	this->contacts[index].setNickname(input);
+	contacts[index].setNickname(input);
 
 	std::cout << "Phone number: ";
 	std::getline(std::cin, input);
@@ -54,7 +54,7 @@ void PhoneBook::addContact()
 		std::cout << "Error: field can't be empty" << std::endl;
 		return;
 	}
-	this->contacts[index].setPhoneNumber(input);
+	contacts[index].setPhoneNumber(input);
 
 	std::cout << "Darkest secret: ";
 	std::getline(std::cin, input);
@@ -63,9 +63,9 @@ void PhoneBook::addContact()
 		std::cout << "Error: field can't be empty" << std::endl;
 		return;
 	}
-	this->contacts[index].setDarkestSecret(input);
+	contacts[index].setDarkestSecret(input);
 
-	this->count++;
+	count++;
 	std::cout << "Contact added!" << std::endl;
 }
 
@@ -74,10 +74,10 @@ void PhoneBook::searchContacts()
 	int max;
 	int i;
 
-	if (this->count > 8)
+	if (count > 8)
 		max = 8;
 	else
-		max = this->count;
+		max = count;
 
 	if (max == 0)
 	{
@@ -95,9 +95,9 @@ void PhoneBook::searchContacts()
 	while (i < max)
 	{
 		std::cout << "|" << std::setw(10) << i
-				  << "|" << std::setw(10) << formatField(this->contacts[i].getFirstName())
-				  << "|" << std::setw(10) << formatField(this->contacts[i].getLastName())
-				  << "|" << std::setw(10) << formatField(this->contacts[i].getNickname())
+				  << "|" << std::setw(10) << formatField(contacts[i].getFirstName())
+				  << "|" << std::setw(10) << formatField(contacts[i].getLastName())
+				  << "|" << std::setw(10) << formatField(contacts[i].getNickname())
 				  << "|" << std::endl;
 		i++;
 	}
@@ -119,9 +119,9 @@ void PhoneBook::searchContacts()
 		return;
 	}
 
-	std::cout << "First name: " << this->contacts[idx].getFirstName() << std::endl;
-	std::cout << "Last name: " << this->contacts[idx].getLastName() << std::endl;
-	std::cout << "Nickname: " << this->contacts[idx].getNickname() << std::endl;
-	std::cout << "Phone number: " << this->contacts[idx].getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << this->contacts[idx].getDarkestSecret() << std::endl;
+	std::cout << "First name: " << contacts[idx].getFirstName() << std::endl;
+	std::cout << "Last name: " << contacts[idx].getLastName() << std::endl;
+	std::cout << "Nickname: " << contacts[idx].getNickname() << std::endl;
+	std::cout << "Phone number: " << contacts[idx].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << contacts[idx].getDarkestSecret() << std::endl;
 }

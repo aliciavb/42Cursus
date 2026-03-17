@@ -2,50 +2,50 @@
 
 void Contact::setFirstName(std::string str)
 {
-	this->first_name = str;
+	first_name = str;
 }
 
 void Contact::setLastName(std::string str)
 {
-	this->last_name = str;
+	last_name = str;
 }
 
 void Contact::setNickname(std::string str)
 {
-	this->nickname = str;
+	nickname = str;
 }
 
 void Contact::setPhoneNumber(std::string str)
 {
-	this->phone_number = str;
+	phone_number = str;
 }
 
 void Contact::setDarkestSecret(std::string str)
 {
-	this->darkest_secret = str;
+	darkest_secret = str;
 }
 
 std::string Contact::getFirstName()
 {
-	return this->first_name;
+	return first_name;
 }
 
 std::string Contact::getLastName()
 {
-	return this->last_name;
+	return last_name;
 }
 
 std::string Contact::getNickname()
 {
-	return this->nickname;
+	return nickname;
 }
 
 std::string Contact::getPhoneNumber()
 {
-	return this->phone_number;
+	return phone_number;
 }
 
 std::string Contact::getDarkestSecret()
 {
-	return this->darkest_secret;
+	return darkest_secret;
 }

@@ -1,7 +1,15 @@
-// Implement the following function in the appropriate file:
-// 
-// Zombie* zombieHorde( int N, std::string name );
-// 
-// It must allocate N Zombie objects in a single allocation. Then, it must 
-// initialize the zombies, giving each of them the name passed as a parameter. 
-// The function returns a pointer to the first zombie.
+#include "Zombie.hpp"
+
+Zombie* zombieHorde(int N, std::string name)
+{
+    if (N <= 0)
+        return (NULL);
+    Zombie *horde = new Zombie[N];
+    int i = 0;
+    while (i < N)
+    {
+        horde[i].setName(name);
+        i++;
+    }
+    return (horde);
+}

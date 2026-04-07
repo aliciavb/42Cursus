@@ -16,3 +16,21 @@
 // That’s all—no tricks. The goal of this exercise is to demystify references,
 // which may seem completely new. Although there are some small differences, this
 // is simply another syntax for something you already do: address manipulation.
+#include <string>
+#include <iostream>
+
+int main(void)
+{
+	std::string stringVar = "HI THIS IS BRAIN";
+	std::string *stringPTR = &stringVar;
+	std::string &stringREF = stringVar;
+	
+	std::cout << &stringVar << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &stringREF << std::endl;
+
+	std::cout << stringVar << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
+
+}

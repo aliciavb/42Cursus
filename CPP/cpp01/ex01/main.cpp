@@ -2,8 +2,8 @@
 
 int main(void)
 {
-    int N = 5;
-    Zombie *horde = zombieHorde(N, "HordeZombie");
+	int N = 8;
+    Zombie *horde = zombieHorde(N, "zombie");
 
     if (horde == NULL)
         return (1);
@@ -11,7 +11,6 @@ int main(void)
     int i = 0;
     while (i < N)
     {
-        std::cout << i << ": ";
         horde[i].announce();
         i++;
     }

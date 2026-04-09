@@ -1,7 +1,3 @@
-// If your implementation is correct, executing the following code will print an attack
-// with "crude spiked club" followed by a second attack with "some other type of club" for
-// both test cases:
-
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
@@ -28,9 +24,3 @@ int main()
 
 	return 0;
 }
-
-// Do not forget to check for memory leaks.
-
-// In which case do you think it would be best to use a pointer to
-// Weapon? And a reference to Weapon? Why? Think about it before
-// starting this exercise.

@@ -3,7 +3,7 @@ NAME = sedIsForLosers
 C = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp 
+SRC = main.cpp Sed.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
